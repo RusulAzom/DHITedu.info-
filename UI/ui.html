@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHIT App — Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A7F2E;
+            --primary-dark: #086824;
+            --secondary: #0077B6;
+            --bg: #F7F9FC;
+            --card: #FFFFFF;
+            --text: #1A1A1A;
+            --text-soft: #6B7280;
+            --border: #E9EDF3;
+            --shadow: 0 4px 14px rgba(16, 24, 40, 0.06);
+            --radius: 16px;
+        }
+
+        [data-theme="dark"] {
+            --primary: #16C158;
+            --primary-dark: #0FA347;
+            --secondary: #3FA9E8;
+            --bg: #0E1512;
+            --card: #161F1B;
+            --text: #F2F5F3;
+            --text-soft: #9AA6A0;
+            --border: #253128;
+            --shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Noto Sans Bengali', 'Noto Sans', sans-serif;
+            background: #DCE3EA;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 12px 60px;
+            color: var(--text);
+            transition: background .25s ease;
+        }
+
+        [data-theme="dark"] body {
+            background: #05080A;
+        }
+
+        .toolbar {
+            width: 390px;
+            max-width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 0 4px;
+        }
+
+        .toolbar-label {
+            font-size: 12px;
+            color: #55606B;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .toolbar-label {
+            color: #7C8A82;
+        }
+
+        .theme-btn {
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 7px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .frame {
+            width: 390px;
+            max-width: 100%;
+            height: 844px;
+            background: var(--bg);
+            border-radius: 40px;
+            border: 8px solid #14181C;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 90px;
+            scrollbar-width: none;
+        }
+
+        .scroll-area::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ---------- HEADER ---------- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 16px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 20px;
+            height: 2.4px;
+            background: var(--text);
+            border-radius: 2px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 17px;
+            letter-spacing: .02em;
+            color: var(--primary);
+        }
+
+        .logo small {
+            font-weight: 500;
+            font-size: 10px;
+            color: var(--text-soft);
+            display: block;
+            margin-top: -2px;
+        }
+
+        .coin-pill {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            border-radius: 999px;
+            padding: 6px 14px;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(10, 127, 46, 0.35);
+            cursor: pointer;
+        }
+
+        .coin-pill .amt {
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            justify-content: center;
+        }
+
+        .coin-pill .sub {
+            font-size: 9px;
+            opacity: .9;
+            margin-top: 1px;
+        }
+
+        .avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 2px solid var(--card);
+            box-shadow: 0 0 0 1.5px var(--secondary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hbtn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(10, 127, 46, 0.1);
+            color: var(--primary);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform .15s ease, background .15s ease;
+        }
+
+        .hbtn:active {
+            transform: scale(.92);
+        }
+
+        .hbtn:hover {
+            background: rgba(10, 127, 46, 0.18);
+        }
+
+        /* ---------- SECTIONS ---------- */
+        section {
+            padding: 16px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0 0 12px;
+            color: var(--text);
+        }
+
+        .section-title span {
+            color: var(--text-soft);
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        /* Hero */
+        .hero-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .hero-slider {
+            flex: 1.6;
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            min-height: 132px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-track {
+            display: flex;
+            width: 500%;
+            /* 5 slides */
+            height: 100%;
+            transition: transform .45s cubic-bezier(.65, 0, .35, 1);
+        }
+
+        .hero-slide {
+            width: 20%;
+            /* 100% / 5 slides */
+            padding: 14px;
+            color: #fff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .hero-slide::after {
+            content: "";
+            position: absolute;
+            right: -30px;
+            top: -30px;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .hero-slide[data-slide="0"] {
+            background: linear-gradient(160deg, #0A7F2E, #075C21);
+        }
+
+        .hero-slide[data-slide="1"] {
+            background: linear-gradient(160deg, #E07B00, #A85700);
+        }
+
+        .hero-slide[data-slide="2"] {
+            background: linear-gradient(160deg, #0077B6, #024C74);
+        }
+
+        .hero-slide[data-slide="3"] {
+            background: linear-gradient(160deg, #7B2CBF, #4E1985);
+        }
+
+        .hero-slide[data-slide="4"] {
+            background: linear-gradient(160deg, #B5179E, #6E0C61);
+        }
+
+        .hero-tag {
+            align-self: flex-start;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .03em;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.22);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .hero-eyebrow {
+            font-size: 10px;
+            opacity: .85;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        .play-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            align-self: flex-start;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 14px;
+            display: flex;
+            gap: 5px;
+            z-index: 5;
+        }
+
+        .hero-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all .25s ease;
+        }
+
+        .hero-dots span.active {
+            width: 16px;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .hero-side {
+            flex: 0.9;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mini-card {
+            flex: 1;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text);
+            text-align: left;
+            padding: 8px 8px;
+            line-height: 1.35;
+        }
+
+        .mini-card .ic {
+            font-size: 16px;
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(10, 127, 46, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Grid services */
+        /* NEWS HEADLINE TICKER */
+        .news-ticker {
+            display: flex;
+            align-items: stretch;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+
+        .ticker-label {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 14px;
+            background: linear-gradient(135deg, #E63946, #C1121F);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .3px;
+            position: relative;
+        }
+
+        .ticker-label::after {
+            content: "";
+            position: absolute;
+            right: -8px;
+            top: 0;
+            bottom: 0;
+            width: 16px;
+            background: linear-gradient(135deg, #E63946, #C1121F);
+            transform: skewX(-14deg);
+            z-index: 1;
+        }
+
+        .ticker-track {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            white-space: nowrap;
+            padding-left: 16px;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 16px, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 16px, #000 92%, transparent);
+        }
+
+        .ticker-move {
+            display: flex;
+            width: max-content;
+            animation: ticker-scroll 30s linear infinite;
+        }
+
+        .ticker-track:hover .ticker-move {
+            animation-play-state: paused;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            padding-right: 40px;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        @keyframes ticker-scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-move {
+                animation: none;
+            }
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 7px;
+        }
+
+        .service-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 9px 3px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform .15s ease;
+        }
+
+        .service-card:active {
+            transform: scale(.96);
+        }
+
+        .service-card .ic {
+            width: 34px;
+            height: 34px;
+            margin: 0 auto 6px;
+            border-radius: 11px;
+            background: rgba(10, 127, 46, 0.1);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .service-card .lbl {
+            font-size: 9.5px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .service-card .sub {
+            font-size: 8px;
+            color: var(--text-soft);
+            margin-top: 2px;
+            line-height: 1.2;
+        }
+
+        .service-card.disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        /* BOOK BANNERS */
+        .book-banners {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .book-banners::-webkit-scrollbar {
+            display: none;
+        }
+
+        .book-banner {
+            flex: 0 0 75%;
+            scroll-snap-align: center;
+            display: block;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            background: var(--card);
+            cursor: pointer;
+            transition: transform .15s ease;
+        }
+
+        .book-banner:active {
+            transform: scale(.97);
+        }
+
+        .book-banner img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .see-all-services {
+            width: 100%;
+            margin-top: 8px;
+            padding: 6px 4px;
+            border: none;
+            background: transparent;
+            color: var(--primary);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            transition: opacity .15s ease, transform .15s ease;
+        }
+
+        .see-all-services:active {
+            transform: scale(.98);
+            opacity: .7;
+        }
+
+        .see-all-services:hover {
+            opacity: .8;
+        }
+
+        .see-all-services .caret {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 6px solid var(--primary);
+            opacity: .8;
+        }
+
+        .service-card.disabled .ic {
+            background: #9CA3AF22;
+            color: #9CA3AF;
+        }
+
+        /* Courses horizontal scroll */
+        .course-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+            margin: 0 -16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            scroll-snap-type: x proximity;
+        }
+
+        .course-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .course-card {
+            /* sized so 2 cards show fully + ~20% of the 3rd peeks in, hinting more to scroll */
+            width: calc((100% - 24px) / 2.2);
+            min-width: calc((100% - 24px) / 2.2);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px;
+            box-shadow: var(--shadow);
+            flex-shrink: 0;
+            scroll-snap-align: start;
+        }
+
+        .course-tag {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--secondary);
+            background: rgba(0, 119, 182, 0.1);
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .course-name {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .course-meta {
+            font-size: 11px;
+            color: var(--text-soft);
+            margin-bottom: 10px;
+        }
+
+        .course-price {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .enroll-btn {
+            width: 100%;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* Other services row */
+        .other-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .other-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
+
+        .other-card .ic {
+            font-size: 20px;
+            margin-bottom: 6px;
+            color: var(--secondary);
+        }
+
+        .other-card .lbl {
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .other-card .sub {
+            font-size: 9px;
+            color: var(--text-soft);
+            margin-top: 2px;
+        }
+
+        /* Bottom nav */
+        nav.bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            display: flex;
+            padding: 8px 4px 12px;
+            z-index: 30;
+        }
+
+        nav.bottom button {
+            flex: 1;
+            background: none;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            font-family: inherit;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-soft);
+            cursor: pointer;
+            padding: 4px 0;
+        }
+
+        nav.bottom button .ic {
+            font-size: 18px;
+        }
+
+        nav.bottom button.active {
+            color: var(--primary);
+        }
+
+        nav.bottom button.active .ic {
+            background: rgba(10, 127, 46, 0.12);
+            border-radius: 10px;
+            padding: 3px 10px;
+        }
+
+        .hint {
+            width: 390px;
+            max-width: 100%;
+            margin-top: 14px;
+            font-size: 11px;
+            color: #55606B;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        [data-theme="dark"] .hint {
+            color: #7C8A82;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="frame" data-theme="light" id="frame">
+        <div class="scroll-area">
+
+            <!-- HEADER -->
+            <header>
+                <div class="header-left">
+                    <!-- <div class="hamburger"><span></span><span></span><span></span></div> -->
+                    <div class="logo">DHIT<small>.edu</small></div>
+                </div>
+                <div class="header-actions">
+                    <div class="coin-pill">
+                        <div class="amt">💰১২৫০</div>
+                        <div class="sub">Earning</div>
+                    </div>
+                    <button class="hbtn" onclick="openSearch()" aria-label="Search">🔍</button>
+                    <button class="avatar" aria-label="Profile">👤</button>
+                    <button class="hbtn" onclick="toggleTheme()" aria-label="Theme" id="headerThemeBtn">🌙</button>
+                </div>
+            </header>
+
+            <!-- HERO -->
+            <section>
+                <div class="hero-row">
+                    <div class="hero-slider" id="heroSlider">
+                        <div class="hero-track" id="heroTrack">
+
+                            <div class="hero-slide" data-slide="0">
+                                <div>
+                                    <span class="hero-tag">🎁 অফার</span>
+                                    <div class="hero-title">RMP কোর্সে ৩০% ছাড় — সীমিত সময়ের জন্য</div>
+                                </div>
+
+                            </div>
+
+                            <div class="hero-slide" data-slide="1">
+                                <div>
+                                    <span class="hero-tag">📋 কোর্স তথ্য</span>
+                                    <div class="hero-title">DHIT পরিচিতি ও কোর্স স্ট্রাকচার — ১০ সেকেন্ডে জানুন</div>
+                                </div>
+                            </div>
+
+                            <div class="hero-slide" data-slide="2">
+                                <div>
+                                    <span class="hero-tag">💻 অনলাইন কোর্স</span>
+                                    <div class="hero-title">ঘরে বসে শিখুন, নিজের সময়ে ক্লাস করুন</div>
+                                </div>
+
+                            </div>
+
+                            <div class="hero-slide" data-slide="3">
+                                <div>
+                                    <span class="hero-tag">🎤 সেমিনার</span>
+                                    <div class="hero-title">আসন্ন লাইভ সেমিনার — এখনই রেজিস্ট্রেশন করুন</div>
+                                </div>
+
+                            </div>
+
+                            <div class="hero-slide" data-slide="4">
+                                <div>
+                                    <span class="hero-tag">✨ অন্যান্য</span>
+                                    <div class="hero-title">সর্বশেষ আপডেট ও ঘোষণা দেখুন</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="hero-dots" id="heroDots">
+                            <span class="active" onclick="goToSlide(0)"></span>
+                            <span onclick="goToSlide(1)"></span>
+                            <span onclick="goToSlide(2)"></span>
+                            <span onclick="goToSlide(3)"></span>
+                            <span onclick="goToSlide(4)"></span>
+                        </div>
+                    </div>
+                    <div class="hero-side">
+                        <div class="mini-card"><span class="ic">✅</span> Certificate Verify</div>
+                        <div class="mini-card"><span class="ic">📊</span> Result</div>
+                        <div class="mini-card"><span class="ic">🏢</span> সকল ব্রাঞ্চ</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ALL SERVICE -->
+            <section style="padding-top:0;">
+                <div class="news-ticker">
+                    <span class="ticker-label">📰</span>
+                    <div class="ticker-track">
+                        <div class="ticker-move">
+                            <span class="ticker-content" id="tickerContent">
+                                🩺 অ্যান্টিবায়োটিক ব্যবহারের ৫টি নিয়ম &nbsp;&nbsp; 🐍 সাপে কাটলে প্রাথমিক করণীয়
+                                &nbsp;&nbsp; 💧 ডায়রিয়ায় করণীয় ও বিপদ চিহ্ন &nbsp;&nbsp; 🌡️ জ্বর হলেই এন্টিবায়োটিক
+                                নয়
+                                &nbsp;&nbsp; 🤰 গর্ভবতীর ৫টি বিপদ সংকেত &nbsp;&nbsp;&nbsp;&nbsp;
+                            </span>
+                            <span class="ticker-content" aria-hidden="true">
+                                🩺 অ্যান্টিবায়োটিক ব্যবহারের ৫টি নিয়ম &nbsp;&nbsp; 🐍 সাপে কাটলে প্রাথমিক করণীয়
+                                &nbsp;&nbsp; 💧 ডায়রিয়ায় করণীয় ও বিপদ চিহ্ন &nbsp;&nbsp; 🌡️ জ্বর হলেই এন্টিবায়োটিক
+                                নয়
+                                &nbsp;&nbsp; 🤰 গর্ভবতীর ৫টি বিপদ সংকেত &nbsp;&nbsp;&nbsp;&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="ic">👨‍⚕️</div>
+                        <div class="lbl">Doctor Booking</div>
+                        <div class="sub">Telemedicine</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="ic">📚</div>
+                        <div class="lbl">All Course</div>
+                        <div class="sub">RMP, LMAFP</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="ic">📜</div>
+                        <div class="lbl">Certificate</div>
+                        <div class="sub">Verify</div>
+                    </div>
+                    <div class="service-card disabled">
+                        <div class="ic">🚑</div>
+                        <div class="lbl">Ambulance</div>
+                        <div class="sub">Coming Soon</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="ic">📖</div>
+                        <div class="lbl">Resources</div>
+                        <div class="sub">Article, Job</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="ic">💊</div>
+                        <div class="lbl">Medicine</div>
+                        <div class="sub">Directory</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="ic">💰</div>
+                        <div class="lbl">অনলাইন আয়</div>
+                        <div class="sub">Earn Online</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="ic">🎤</div>
+                        <div class="lbl">ফ্রি সেমিনার</div>
+                        <div class="sub">Free</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="ic">🏛️</div>
+                        <div class="lbl">সরকারি চাকরি প্রিঃ</div>
+                        <div class="sub">Job Prep</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="ic">⚽</div>
+                        <div class="lbl">লাইভ খেলা</div>
+                        <div class="sub">Live Score</div>
+                    </div>
+                </div>
+                <button class="see-all-services" onclick="location.href='service.html'">
+                    <span>সব সার্ভিস</span>
+                    <span class="caret"></span>
+                </button>
+            </section>
+
+            <!-- BOOK BANNERS -->
+            <section style="padding-top:0;">
+                <div class="book-banners">
+                    <a class="book-banner" href="#" target="_blank" rel="noopener">
+                        <img src="img/book1 (1).png" alt="Book banner 1">
+                    </a>
+                    <a class="book-banner" href="#" target="_blank" rel="noopener">
+                        <img src="img/book1 (2).png" alt="Book banner 2">
+                    </a>
+                    <a class="book-banner" href="#" target="_blank" rel="noopener">
+                        <img src="img/book1 (2).png" alt="Book banner 3">
+                    </a>
+                </div>
+            </section>
+
+            <!-- FEATURED COURSES -->
+            <section style="padding-top:0;">
+                <h3 class="section-title">জনপ্রিয় কোর্স</h3>
+                <div class="course-scroll">
+                    <div class="course-card">
+                        <span class="course-tag">RMP Course</span>
+                        <div class="course-name">RMP সার্টিফিকেট কোর্স</div>
+                        <div class="course-meta">মেয়াদ: ৩ মাস</div>
+                        <div class="course-price">৳৪,০০০</div>
+                        <button class="enroll-btn">ভর্তি হোন</button>
+                    </div>
+                    <div class="course-card">
+                        <span class="course-tag">LMAFP Course</span>
+                        <div class="course-name">LMAFP সার্টিফিকেট কোর্স</div>
+                        <div class="course-meta">মেয়াদ: ২ বছর</div>
+                        <div class="course-price">৳৯,০০০</div>
+                        <button class="enroll-btn">ভর্তি হোন</button>
+                    </div>
+                    <div class="course-card">
+                        <span class="course-tag">DMF Course</span>
+                        <div class="course-name">DMF সার্টিফিকেট কোর্স</div>
+                        <div class="course-meta">মেয়াদ: ৩ বছর</div>
+                        <div class="course-price">৳১৫,০০০</div>
+                        <button class="enroll-btn">ভর্তি হোন</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OTHER SERVICES -->
+            <section style="padding-top:0;">
+                <div class="other-row">
+                    <div class="other-card">
+                        <div class="ic">📺</div>
+                        <div class="lbl">Live TV</div>
+                        <div class="sub">DHIT Health TV</div>
+                    </div>
+                    <div class="other-card">
+                        <div class="ic">💼</div>
+                        <div class="lbl">Job</div>
+                        <div class="sub">BCSpark</div>
+                    </div>
+                    <div class="other-card">
+                        <div class="ic">📖</div>
+                        <div class="lbl">Book</div>
+                        <div class="sub">Scholarship</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- BOTTOM NAV -->
+        <nav class="bottom">
+            <button><span class="ic">📘</span>Learn</button>
+            <button><span class="ic">💰</span>Earn</button>
+            <button class="active"><span class="ic">🏠</span>Home</button>
+            <button><span class="ic">👤</span>Profile</button>
+            <button><span class="ic">▦</span>More</button>
+        </nav>
+    </div>
+
+    
+    <script>
+        // ---- Hero slider (infinite / circular) ----
+        const heroTrack = document.getElementById('heroTrack');
+        const heroDots = document.querySelectorAll('#heroDots span');
+        const realSlides = 5;
+        const EASE = 'transform .45s cubic-bezier(.65, 0, .35, 1)';
+        let autoTimer;
+        let isAnimating = false;
+
+        // Clone the first and last real slides to allow seamless wrap-around
+        const originalSlides = Array.from(heroTrack.children);
+        const firstClone = originalSlides[0].cloneNode(true);
+        const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
+        firstClone.setAttribute('aria-hidden', 'true');
+        lastClone.setAttribute('aria-hidden', 'true');
+        heroTrack.appendChild(firstClone);
+        heroTrack.insertBefore(lastClone, originalSlides[0]);
+
+        // DOM layout: [cloneOfLast, 0, 1, 2, 3, 4, cloneOfFirst]
+        const count = realSlides + 2;
+        heroTrack.style.width = (count * 100) + '%';
+        Array.from(heroTrack.children).forEach(s => { s.style.width = (100 / count) + '%'; });
+
+        let index = 1; // start on the first real slide
+
+        function applyTransform(animate) {
+            heroTrack.style.transition = animate ? EASE : 'none';
+            heroTrack.style.transform = `translateX(-${index * (100 / count)}%)`;
+        }
+
+        function updateDots() {
+            const real = (index - 1 + realSlides) % realSlides;
+            heroDots.forEach((d, i) => d.classList.toggle('active', i === real));
+        }
+
+        function moveTo(i, animate = true) {
+            index = i;
+            applyTransform(animate);
+            updateDots();
+        }
+
+        function nextSlide() {
+            if (isAnimating) return;
+            isAnimating = true;
+            moveTo(index + 1);
+        }
+
+        function prevSlide() {
+            if (isAnimating) return;
+            isAnimating = true;
+            moveTo(index - 1);
+        }
+
+        // Called by the dots (real index 0..4)
+        function goToSlide(realIndex) {
+            if (isAnimating) return;
+            isAnimating = true;
+            moveTo(realIndex + 1);
+            resetAutoplay();
+        }
+
+        heroTrack.addEventListener('transitionend', () => {
+            if (index === count - 1) {
+                // moved onto the clone of the first slide -> snap to the real first
+                moveTo(1, false);
+            } else if (index === 0) {
+                // moved onto the clone of the last slide -> snap to the real last
+                moveTo(realSlides, false);
+            }
+            isAnimating = false;
+        });
+
+        function resetAutoplay() {
+            clearInterval(autoTimer);
+            autoTimer = setInterval(nextSlide, 3500);
+        }
+
+        // swipe support
+        let startX = 0;
+        const slider = document.getElementById('heroSlider');
+        slider.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+        slider.addEventListener('touchend', e => {
+            const diff = e.changedTouches[0].clientX - startX;
+            if (diff > 40) { prevSlide(); resetAutoplay(); }
+            else if (diff < -40) { nextSlide(); resetAutoplay(); }
+        }, { passive: true });
+
+        // Position on the first real slide without animation, then start autoplay
+        moveTo(1, false);
+        resetAutoplay();
+
+        function toggleTheme() {
+            const frame = document.getElementById('frame');
+            const btn = document.getElementById('themeBtn');
+            const headerBtn = document.getElementById('headerThemeBtn');
+            const isDark = frame.getAttribute('data-theme') === 'dark';
+            frame.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            btn.textContent = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+            headerBtn.textContent = isDark ? '🌙' : '☀️';
+        }
+
+        function openSearch() {
+            // Placeholder: replace with a real search modal / page navigation
+            alert('Search coming soon');
+        }
+    </script>
+
+</body>
+
+</html>
