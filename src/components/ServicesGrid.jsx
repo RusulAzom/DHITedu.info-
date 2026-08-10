@@ -7,6 +7,7 @@ const services = [
   { icon: "💊", label: "Medicine Directory", href: "/" },
   { icon: "📖", label: "Resources", href: "/" },
   { icon: "💰", label: "অনলাইন আয়", href: "/" },
+  { icon: "💻", label: "অনলাইন কোর্স", href: "/online" },
   { icon: "🏛️", label: "সরকারি চাকরি প্রিপারেশন", href: "https://bcspark.vercel.app", external: true },
   { icon: "📰", label: "লাইভ নিউজ", href: "/" },
   { icon: "🩺", label: "চিকিৎসা কথা", href: "/blog" },
@@ -32,11 +33,6 @@ export default function ServicesGrid() {
                 {service.label}
               </div>
             </div>
-            {service.disabled ? (
-              <span className="rounded-full bg-gray-200 px-2 py-1 text-[10px] font-semibold text-gray-600">
-                Coming Soon
-              </span>
-            ) : null}
           </div>
         );
 

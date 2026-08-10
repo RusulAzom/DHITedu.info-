@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
+import { courses } from "@/lib/courseData";
+
 const branchLocations = [
   "ঢাকা সেন্ট্রাল",
   "চান্দিনা",
@@ -12,12 +14,11 @@ const branchLocations = [
   "কিশোরগঞ্জ নীলফামারী",
 ];
 
-import { useAppShell } from "@/components/AppShellContext";
-
 export default function Header() {
-  const { openSearch } = useAppShell();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [branchesOpen, setBranchesOpen] = useState(false);
+  const [coursesOpen, setCoursesOpen] = useState(false);
+  const [drawerCoursesOpen, setDrawerCoursesOpen] = useState(false);
 
   return (
     <>
@@ -27,7 +28,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="flex-shrink-0 flex h-[44px] w-[44px] items-center justify-center rounded-full bg-white text-[var(--color-text-dark)] shadow-sm"
+              className="flex-shrink-0 flex h-[44px] w-[44px] items-center justify-center rounded-full bg-white text-[var(--color-text-dark)] shadow-sm md:hidden"
               aria-label="Open menu"
             >
               ☰
@@ -37,36 +38,52 @@ export default function Header() {
             </div>
           </div>
 
-              <div className="flex-shrink-0">
+          <div className="hidden items-center gap-3 md:flex">
+            <Link href="/online" className="rounded-full bg-[var(--color-primary-green)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-primary-green)/90]">
+              অনলাইন কোর্স
+            </Link>
+            <Link href="#" className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]">
+              আমাদের সম্পর্কে
+            </Link>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setCoursesOpen((prev) => !prev)}
+                className="flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-white px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]"
+                aria-expanded={coursesOpen}
+              >
+                কোর্স সমূহ
+                <span className="text-xs">▾</span>
+              </button>
+              {coursesOpen ? (
+                <div className="absolute left-0 z-20 mt-2 w-[320px] overflow-hidden rounded-[24px] border border-[var(--color-border)] bg-white shadow-xl">
+                  <div className="space-y-1 p-3">
+                    {courses.map((course) => (
+                      <Link
+                        key={course.title}
+                        href="/courses"
+                        className="block rounded-2xl px-3 py-3 text-sm text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]"
+                      >
+                        <div className="font-semibold">{course.title}</div>
+                        <div className="text-xs text-[var(--color-text-muted)]">মেয়াদ: {course.duration}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+            <Link href="#" className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]">
+              ব্লগ
+            </Link>
+          </div>
+
+          <div className="flex-shrink-0 ml-auto">
             <div className="relative inline-flex items-center p-1.5 bg-green-50 rounded-full border border-green-200">
               <span className="text-base">💰</span>
               <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm">
                 ১২৫০
               </span>
             </div>
-          </div>
-
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <button
-              type="button"
-              onClick={openSearch}
-              className="flex-shrink-0 flex h-[44px] w-[44px] items-center justify-center rounded-full bg-white text-[var(--color-text-dark)] shadow-sm"
-              aria-label="Search"
-            >
-              🔍
-            </button>
-            <Link href="/profile" className="flex-shrink-0 flex h-[44px] w-[44px] items-center justify-center rounded-full bg-white text-[var(--color-text-dark)] shadow-sm" aria-label="Profile">
-              👤
-            </Link>
-            {/* Dark mode toggle currently disabled */}
-            <button
-              type="button"
-              disabled
-              className="flex-shrink-0 flex h-[44px] w-[44px] cursor-not-allowed items-center justify-center rounded-full bg-white text-[var(--color-text-muted)] shadow-sm"
-              aria-label="Dark mode disabled"
-            >
-              🌙
-            </button>
           </div>
         </div>
       </header>
@@ -92,24 +109,26 @@ export default function Header() {
               <Link href="#" className="block rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]">
                 আমাদের সম্পর্কে
               </Link>
-              <Link href="/courses" className="block rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]">
-                কোর্স সমূহ
-              </Link>
               <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-light)]">
                 <button
                   type="button"
-                  onClick={() => setBranchesOpen((prev) => !prev)}
+                  onClick={() => setDrawerCoursesOpen((prev) => !prev)}
                   className="flex w-full items-center justify-between px-3 py-3 text-sm font-semibold text-[var(--color-text-dark)]"
                 >
-                  <span>আমাদের শাখা সমূহ</span>
-                  <span>{branchesOpen ? "−" : "+"}</span>
+                  <span>কোর্স সমূহ</span>
+                  <span>{drawerCoursesOpen ? "−" : "+"}</span>
                 </button>
-                {branchesOpen ? (
+                {drawerCoursesOpen ? (
                   <div className="space-y-1 border-t border-[var(--color-border)] px-3 py-2">
-                    {branchLocations.map((branch) => (
-                      <div key={branch} className="rounded-xl px-3 py-2 text-sm text-[var(--color-text-muted)] hover:bg-white hover:text-[var(--color-text-dark)]">
-                        {branch}
-                      </div>
+                    {courses.map((course) => (
+                      <Link
+                        key={course.title}
+                        href="/courses"
+                        className="block rounded-xl px-3 py-2 text-sm text-[var(--color-text-muted)] transition hover:bg-white hover:text-[var(--color-text-dark)]"
+                      >
+                        <div className="font-semibold">{course.title}</div>
+                        <div className="text-xs">মেয়াদ: {course.duration}</div>
+                      </Link>
                     ))}
                   </div>
                 ) : null}
