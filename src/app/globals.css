@@ -80,3 +80,53 @@ body {
     animation: marquee 18s linear infinite;
   }
 }
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  header,
+  footer,
+  nav,
+  .no-print,
+  form,
+  button,
+  .fixed,
+  [class*="fixed"],
+  [class*="sticky"] {
+    display: none !important;
+  }
+
+  #result-print-area,
+  .rounded-\[20px\],
+  .bg-white,
+  .shadow-sm,
+  .ring-1 {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    border-radius: 0 !important;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    border: 1px solid #ccc !important;
+    padding: 6px 8px !important;
+  }
+
+  img {
+    max-height: 130px;
+    max-width: 130px;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+}

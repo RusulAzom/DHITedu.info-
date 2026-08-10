@@ -92,7 +92,7 @@ export default function Header() {
               ব্লগ
             </Link>
             <Link
-              href="#"
+              href="/verify"
               className="rounded-full bg-[#0A7F2E] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-600"
             >
               সার্টিফিকেট ভেরিফাই
@@ -191,7 +191,7 @@ export default function Header() {
               <Link href="#" className="block rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]">
                 ব্লগ
               </Link>
-              <Link href="#" className="block rounded-2xl bg-[#0A7F2E] px-3 py-3 text-sm font-semibold text-white">
+              <Link href="/verify" className="block rounded-2xl bg-[#0A7F2E] px-3 py-3 text-sm font-semibold text-white">
                 সার্টিফিকেট ভেরিফিকেশন
               </Link>
               <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-light)] px-3 py-3">
