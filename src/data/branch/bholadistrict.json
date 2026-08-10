@@ -1,0 +1,152 @@
+{
+  "branch": {
+    "id": "bhola",
+    "name": "Dream Health and Information Technology - Bhola Branch",
+    "shortName": "DHIT Bhola",
+    "tagline": "বেকারত্ব দূরীকরণ, স্বনির্ভরতা অর্জন ও পল্লী চিকিৎসকদের পেশাগত স্বীকৃতি এবং দক্ষতা বৃদ্ধিতে DHIT এর কোর্স সমূহে ব্যাচ ভিত্তিক ভর্তি চলছে",
+    "govtApproved": true,
+    "govtRegNo": "সি-১৭০২২৪/২১",
+    "approvalNote": "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার কর্তৃক অনুমোদিত এবং স্বাস্থ্য অধিদপ্তরের কারিকুলাম অনুসারে",
+    "govtRegNoShort": "সি-১৭০২২৪"
+  },
+  "director": {
+    "name": "M Maksud Alam",
+    "designation": "Director (DHIT Bhola)",
+    "email": "mdmaksud77077@gmail.com",
+    "phonePrimary": "01873-490735",
+    "phoneSecondary": [
+      "01612-109008",
+      "01918-777345"
+    ],
+    "photo": "./src/data/imgs/demodirectorofbranchs.png"
+  },
+  "contact": {
+    "address": "ভোলা মুসলিম ইন্সটিটিউট পাবলিক লাইব্রেরি, নতুন বাজার, ভোলা",
+    "addressEn": "Bhola Muslim Institute Public Library, Notun Bazar, Bhola",
+    "district": "Bhola",
+    "phones": [
+      "01873-490735",
+      "01612-109008",
+      "01918-777345"
+    ],
+    "email": "mdmaksud77077@gmail.com"
+  },
+  "admission": {
+    "status": "ভর্তি চলছে",
+    "statusEn": "Admission Going On",
+    "announcement": "সুখবর! সুখবর!! সুখবর!!! ভর্তি চলছে",
+    "durationOptions": [
+      "3 মাস",
+      "6 মাস",
+      "1 বছর",
+      "2 বছর"
+    ]
+  },
+  "availableCourses": [
+    {
+      "code": "RMP",
+      "name": "RMP - Rural Medical Practitioner / Palli Chikitsak",
+      "category": "Paramedical"
+    },
+    {
+      "code": "DMA",
+      "name": "DMA - Diploma in Medical Assistant",
+      "category": "Paramedical"
+    },
+    {
+      "code": "DMF",
+      "name": "DMF - Diploma in Medical Faculty",
+      "category": "Paramedical"
+    },
+    {
+      "code": "DENTAL",
+      "name": "Dental Course",
+      "category": "Paramedical"
+    },
+    {
+      "code": "NURSING",
+      "name": "Nursing Course",
+      "category": "Paramedical"
+    },
+    {
+      "code": "PARAMEDICAL",
+      "name": "Paramedical Course - General",
+      "category": "Paramedical"
+    }
+  ],
+  "courseDurations": [
+    "3 Months",
+    "6 Months",
+    "1 Year",
+    "2 Years"
+  ],
+  "studentList": {
+    "title": "Student Lists",
+    "titleBn": "ছাত্র-ছাত্রীদের তালিকা",
+    "previewType": "googleDocsEmbed",
+    "tabs": [
+      {
+        "id": "batch-2022",
+        "label": "2022 Batch",
+        "labelBn": "২০২২ ব্যাচ",
+        "year": "2022",
+        "url": "https://docs.google.com/document/d/e/2PACX-1vQyou6H4DlPhpk53bQVHlfmbNJv1GzJIWEH1paFJmkMudlJ_5gayoGC0JMqJt9xVMTB-dstTs7Mrx7R/pub",
+        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vQyou6H4DlPhpk53bQVHlfmbNJv1GzJIWEH1paFJmkMudlJ_5gayoGC0JMqJt9xVMTB-dstTs7Mrx7R/pub?embedded=true"
+      },
+      {
+        "id": "batch-2023",
+        "label": "2023 Batch",
+        "labelBn": "২০২৩ ব্যাচ",
+        "year": "2023",
+        "url": "https://docs.google.com/document/d/e/2PACX-1vR6xqx3EnVTvdgafapBmI_OqEnnL3gZCaQ08mMXZEPHyqXanlkP1d9AAZ5btWpUD58Vdnh7_dKrjUwb/pub",
+        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vR6xqx3EnVTvdgafapBmI_OqEnnL3gZCaQ08mMXZEPHyqXanlkP1d9AAZ5btWpUD58Vdnh7_dKrjUwb/pub?embedded=true"
+      },
+      {
+        "id": "batch-2023-24",
+        "label": "2023/24 Batch",
+        "labelBn": "২০২৩/২৪ ব্যাচ",
+        "year": "2023-24",
+        "url": "https://docs.google.com/document/d/e/2PACX-1vT1qjX7kuaDRdXpBzKPGb7tpgScHKi5qofql1xUAf0gT9rIHvH98qZlvnBAELRPYFQHQJrYO7YxUG2x/pub",
+        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vT1qjX7kuaDRdXpBzKPGb7tpgScHKi5qofql1xUAf0gT9rIHvH98qZlvnBAELRPYFQHQJrYO7YxUG2x/pub?embedded=true"
+      },
+      {
+        "id": "batch-2024",
+        "label": "2024 Batch",
+        "labelBn": "২০২৪ ব্যাচ",
+        "year": "2024",
+        "url": "https://docs.google.com/document/d/e/2PACX-1vSv5LmOZa94wphodNE5jvKI_8hn__qyPa0pUYl9-aLW_1jA0yOTjmULDM4BySiYeukWtpGB4Eyf_h5f/pub",
+        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vSv5LmOZa94wphodNE5jvKI_8hn__qyPa0pUYl9-aLW_1jA0yOTjmULDM4BySiYeukWtpGB4Eyf_h5f/pub?embedded=true"
+      },
+      {
+        "id": "batch-2024-25",
+        "label": "2024/25 Batch",
+        "labelBn": "২০২৪/২৫ ব্যাচ",
+        "year": "2024-25",
+        "url": "https://docs.google.com/document/d/e/2PACX-1vTAzqy_r5NDovFpzFX8esr0TNGfMris_6zBfuDwByko_iM_NaEWfqJzEoiogerTgEVsWwUL34EuGtUG/pub",
+        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vTAzqy_r5NDovFpzFX8esr0TNGfMris_6zBfuDwByko_iM_NaEWfqJzEoiogerTgEVsWwUL34EuGtUG/pub?embedded=true"
+      },
+      {
+        "id": "batch-2025",
+        "label": "2025 Batch",
+        "labelBn": "২০২৫ ব্যাচ",
+        "year": "2025",
+        "url": "https://docs.google.com/document/d/e/2PACX-1vQWEZOLVyX3vUSIA46CzCrHzZbRS_sNxWAPugXYjUTUJO8jcV5IjFs9HsXfp4KwoDT_p_5pF3B-fFk4/pub",
+        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vQWEZOLVyX3vUSIA46CzCrHzZbRS_sNxWAPugXYjUTUJO8jcV5IjFs9HsXfp4KwoDT_p_5pF3B-fFk4/pub?embedded=true"
+      },
+      {
+        "id": "batch-2025-26",
+        "label": "2025/26 Batch",
+        "labelBn": "২০২৫/২৬ ব্যাচ",
+        "year": "2025-26",
+        "originalLabel": "2025/25 batch",
+        "url": "https://docs.google.com/document/d/e/2PACX-1vS_Xvwx0XXU5BFHyX5Sk5StshCyXXgisXKM89N_mos8DQnZKfOccVu-yB-RvSLOM4WBKEEPzI9_KLxd/pub",
+        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vS_Xvwx0XXU5BFHyX5Sk5StshCyXXgisXKM89N_mos8DQnZKfOccVu-yB-RvSLOM4WBKEEPzI9_KLxd/pub?embedded=true"
+      }
+    ]
+  },
+  "seo": {
+    "slug": "bhola",
+    "metaTitle": "DHIT Bhola Branch - Dream Health and Information Technology",
+    "metaDescription": "Dream Health and Information Technology Bhola Branch. Govt Reg No: C-170224/21. Director M Maksud Alam. Paramedical, DMA, DMF, Dental & Nursing courses. Admission going on."
+  }
+}

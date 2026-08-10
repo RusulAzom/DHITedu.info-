@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 const branchLocations = [
-  "ঢাকা সেন্ট্রাল",
-  "চান্দিনা",
-  "ভোলা জেলা",
-  "মণিরামপুর",
-  "পাকেরহাট",
-  "কিশোরগঞ্জ নীলফামারী",
+  { label: "ঢাকা সেন্ট্রাল", value: "dhakacentral" },
+  { label: "চান্দিনা", value: "chandina" },
+  { label: "ভোলা জেলা", value: "bholadistrict" },
+  { label: "মণিরামপুর", value: "monirampur" },
+  { label: "পাকেরহাট", value: "pakerhat" },
+  { label: "কিশোরগঞ্জ নীলফামারী", value: "kishorgonj-nilphamari" },
 ];
 
 export default function BranchesPage() {
@@ -19,10 +19,10 @@ export default function BranchesPage() {
         </div>
         <p className="mb-4 text-sm text-[var(--color-text-muted)]">DHIT-এর সব শাখার তালিকা এখানে দেখুন। ঢাকা সহ সব সাইটে ভর্তি চলছে।</p>
         <div className="grid gap-3 sm:grid-cols-2">
-          {branchLocations.map((branch) => (
-            <div key={branch} className="rounded-[18px] border border-[var(--color-border)] bg-[var(--color-bg-light)] p-4 shadow-sm">
-              <div className="text-base font-semibold text-[var(--color-text-dark)]">{branch}</div>
-            </div>
+          {branchLocations.map((b) => (
+            <Link key={b.value} href={`/branch/${b.value}`} className="block rounded-[18px] border border-[var(--color-border)] bg-[var(--color-bg-light)] p-4 shadow-sm">
+              <div className="text-base font-semibold text-[var(--color-text-dark)]">{b.label}</div>
+            </Link>
           ))}
         </div>
       </div>

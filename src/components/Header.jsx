@@ -2,31 +2,41 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { courses } from "@/lib/courseData";
 
 const branchOptions = [
-  "সকল ব্রাঞ্চ",
-  "ঢাকা সেন্ট্রাল ব্রাঞ্চ",
-  "চান্দিনা ব্রাঞ্চ",
-  "দিনাজপুর-খানসামা ব্রাঞ্চ",
-  "কিশোরগঞ্জ নীলফামারী ব্রাঞ্চ",
-  "ভোলা জেলা ব্রাঞ্চ",
-  "মনিরামপুর ব্রাঞ্চ",
-  "অনলাইন ব্যাচ",
+  { label: "সকল ব্রাঞ্চ", value: "" },
+  { label: "ঢাকা সেন্ট্রাল", value: "dhakacentral" },
+  { label: "চান্দিনা", value: "chandina" },
+  { label: "দিনাজপুর-খানসামা", value: "dinajpur-khanshama" },
+  { label: "কিশোরগঞ্জ নীলফামারী", value: "kishorgonj-nilphamari" },
+  { label: "ভোলা জেলা", value: "bholadistrict" },
+  { label: "মনিরামপুর", value: "monirampur" },
+  { label: "অনলাইন ব্যাচ", value: "online-batch" },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [branchesOpen, setBranchesOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
   const [drawerCoursesOpen, setDrawerCoursesOpen] = useState(false);
   const [branchOpen, setBranchOpen] = useState(false);
-  const [selectedBranch, setSelectedBranch] = useState(branchOptions[0]);
+
+  const selectedBranch = (() => {
+    const match = pathname?.match(/^\/branch\/([^/?#]+)/);
+    if (match?.[1]) {
+      const found = branchOptions.find((br) => br.value === match[1]);
+      if (found) return found.label;
+    }
+    return branchOptions[0].label;
+  })();
 
   return (
     <>
-      <header className="sticky top-0 z-30 border-b border-[var(--color-border)] bg-white/95 px-3 py-2 backdrop-blur-md shadow-sm">
+      <header className="fixed top-0 z-50 w-full px-4 py-3 flex items-center justify-between shadow-sm bg-white">
         <div className="flex w-full items-center justify-between overflow-hidden">
           <div className="flex items-center gap-3 min-w-0">
             <button
@@ -38,7 +48,9 @@ export default function Header() {
               ☰
             </button>
             <div className="min-w-0">
-              <div className="truncate text-lg font-black text-[var(--color-primary-green)]">DHITedu.info</div>
+              <a href="/" className="text-lg font-black text-[var(--color-primary-green)]">
+                DHITedu
+              </a>
             </div>
           </div>
 
@@ -98,18 +110,18 @@ export default function Header() {
               {branchOpen ? (
                 <div className="absolute left-0 z-20 mt-2 w-[240px] overflow-hidden rounded-[24px] border border-[var(--color-border)] bg-white shadow-xl">
                   <div className="space-y-1 p-2">
-                    {branchOptions.map((branch) => (
-                      <button
-                        key={branch}
-                        type="button"
+                    {branchOptions.map((br) => (
+                      <Link
+                        key={br.value}
+                        href={`/branch/${br.value}`}
                         onClick={() => {
-                          setSelectedBranch(branch);
+                          setSelectedBranch(br.label);
                           setBranchOpen(false);
                         }}
-                        className="w-full rounded-2xl px-4 py-3 text-left text-sm text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]"
+                        className="block rounded-2xl px-4 py-3 text-sm text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]"
                       >
-                        {branch}
-                      </button>
+                        {br.label}
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -129,11 +141,14 @@ export default function Header() {
       </header>
 
       {drawerOpen ? (
-        <div className="fixed inset-0 z-40 flex bg-black/40 backdrop-blur-sm md:hidden">
+        <div className="fixed inset-0 z-[60] flex bg-black/40 backdrop-blur-sm md:hidden">
           <div className="h-full w-[70vw] max-w-[340px] bg-white shadow-2xl">
             <div className="flex items-center justify-between border-b border-[var(--color-border)] px-4 py-4">
               <div>
-                <div className="text-lg font-black text-[var(--color-primary-green)]">DHITedu.info</div>
+
+                <a href="/" className="text-lg font-black text-[var(--color-primary-green)]">
+                  DHITedu
+                </a>
               </div>
               <button
                 type="button"
@@ -192,18 +207,18 @@ export default function Header() {
                   </button>
                   {branchOpen ? (
                     <div className="mt-2 overflow-hidden rounded-[20px] border border-[var(--color-border)] bg-white shadow-sm">
-                      {branchOptions.map((branch) => (
-                        <button
-                          key={branch}
-                          type="button"
+                      {branchOptions.map((br) => (
+                        <Link
+                          key={br.value}
+                          href={`/branch/${br.value}`}
                           onClick={() => {
-                            setSelectedBranch(branch);
+                            setSelectedBranch(br.label);
                             setBranchOpen(false);
                           }}
-                          className="w-full px-3 py-3 text-left text-sm text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]"
+                          className="block px-3 py-3 text-left text-sm text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]"
                         >
-                          {branch}
-                        </button>
+                          {br.label}
+                        </Link>
                       ))}
                     </div>
                   ) : null}

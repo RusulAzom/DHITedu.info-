@@ -25,6 +25,23 @@ export default function ClientRoot({ children }: Props) {
     document.documentElement.dataset.theme = dark ? "dark" : "light";
   }, [dark]);
 
+  useEffect(() => {
+    const handleGlobalClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest("a, button");
+      if (!target) return;
+
+      const href = target.getAttribute("href");
+
+      if (href === "#" || href === "" || href === "javascript:void(0)") {
+        e.preventDefault();
+        console.log("This page is under development.");
+      }
+    };
+
+    document.addEventListener("click", handleGlobalClick, true);
+    return () => document.removeEventListener("click", handleGlobalClick, true);
+  }, []);
+
   const appShellValue = {
     isDark: dark,
     toggleTheme: () => setDark((v) => !v),

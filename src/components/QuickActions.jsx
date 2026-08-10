@@ -2,21 +2,31 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const branchOptions = [
-  "সকল ব্রাঞ্চ",
-  "ঢাকা সেন্ট্রাল ব্রাঞ্চ",
-  "চান্দিনা ব্রাঞ্চ",
-  "দিনাজপুর-খানসামা ব্রাঞ্চ",
-  "কিশোরগঞ্জ নীলফামারী ব্রাঞ্চ",
-  "ভোলা জেলা ব্রাঞ্চ",
-  "মনিরামপুর ব্রাঞ্চ",
-  "অনলাইন ব্যাচ",
+  { label: "সকল ব্রাঞ্চ", value: "" },
+  { label: "ঢাকা সেন্ট্রাল", value: "dhakacentral" },
+  { label: "চান্দিনা", value: "chandina" },
+  { label: "দিনাজপুর-খানসামা", value: "dinajpur-khanshama" },
+  { label: "কিশোরগঞ্জ নীলফামারী", value: "kishorgonj-nilphamari" },
+  { label: "ভোলা জেলা", value: "bholadistrict" },
+  { label: "মনিরামপুর", value: "monirampur" },
+  { label: "অনলাইন ব্যাচ", value: "online-batch" },
 ];
 
 export default function QuickActions() {
-  const [selectedBranch, setSelectedBranch] = useState(branchOptions[0]);
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const selectedBranch = (() => {
+    const match = pathname?.match(/^\/branch\/([^/?#]+)/);
+    if (match?.[1]) {
+      const found = branchOptions.find((br) => br.value === match[1]);
+      if (found) return found.label;
+    }
+    return branchOptions[0].label;
+  })();
 
   return (
     <section className="rounded-[20px] bg-gradient-to-r from-[#0d4b75] to-[#0A7F2E] text-white rounded-2xl p-3 shadow-md">
@@ -59,18 +69,18 @@ export default function QuickActions() {
 
         {open ? (
           <div className="absolute left-0 right-0 z-10 mt-2 overflow-hidden rounded-[20px] border border-white/15 bg-white text-[var(--color-text-dark)] shadow-xs shadow-slate-200/50">
-            {branchOptions.map((branch) => (
-              <button
-                key={branch}
-                type="button"
+            {branchOptions.map((br) => (
+              <Link
+                key={br.value}
+                href={`/branch/${br.value}`}
                 onClick={() => {
-                  setSelectedBranch(branch);
+                  setSelectedBranch(br.label);
                   setOpen(false);
                 }}
-                className="w-full border-b-2 border-emerald-500/20 px-4 py-3 text-left text-sm text-slate-900 transition hover:bg-slate-100"
+                className="block border-b-2 border-emerald-500/20 px-4 py-3 text-left text-sm text-slate-900 transition hover:bg-slate-100"
               >
-                {branch}
-              </button>
+                {br.label}
+              </Link>
             ))}
           </div>
         ) : null}

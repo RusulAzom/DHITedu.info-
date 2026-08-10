@@ -9,11 +9,21 @@ const footerLinks = [
   { label: "Shop", href: "/shop" },
 ];
 
+const branchLinks = [
+  { label: "ঢাকা সেন্ট্রাল", href: "/branch/dhakacentral" },
+  { label: "চান্দিনা", href: "/branch/chandina" },
+  { label: "দিনাজপুর-খানসামা", href: "/branch/dinajpur-khanshama" },
+  { label: "কিশোরগঞ্জ নীলফামারী", href: "/branch/kishorgonj-nilphamari" },
+  { label: "ভোলা জেলা", href: "/branch/bholadistrict" },
+  { label: "মনিরামপুর", href: "/branch/monirampur" },
+  { label: "অনলাইন ব্যাচ", href: "/branch/online-batch" },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-white">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-4">
           <div className="space-y-4">
             <div className="text-xl font-black text-white">DHIT - Dream Health and Information Technology</div>
             <p className="max-w-xl text-sm text-slate-300">
@@ -23,6 +33,21 @@ export default function Footer() {
               <a href="#" className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-800 text-white transition hover:bg-slate-700">f</a>
               <a href="#" className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-800 text-white transition hover:bg-slate-700">▶</a>
               <a href="#" className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-800 text-white transition hover:bg-slate-700">🟢</a>
+            </div>
+          </div>
+
+          <div>
+            <div className="text-lg font-semibold text-white">Branches</div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {branchLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-sm text-slate-300 transition hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
 

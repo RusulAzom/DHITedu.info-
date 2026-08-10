@@ -16,8 +16,8 @@ import BottomNav from "@/components/BottomNav";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen w-full bg-transparent text-[var(--color-text)]">
-      <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 pb-20 pt-4 lg:px-8">
+    <main className="relative min-h-screen w-full bg-transparent text-[var(--color-text)] overflow-x-hidden">
+      <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 pb-20 pt-20 lg:px-8">
         <Header />
 
         <div className="mt-4 space-y-4">
