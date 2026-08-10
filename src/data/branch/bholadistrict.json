@@ -10,26 +10,25 @@
     "govtRegNoShort": "সি-১৭০২২৪"
   },
   "director": {
-    "name": "M Maksud Alam",
+    "name": "মুঃ মাকসুদুর রহমান",
     "designation": "Director (DHIT Bhola)",
-    "email": "mdmaksud77077@gmail.com",
+    "email": "maksudbhola85@gmail.com",
     "phonePrimary": "01873-490735",
     "phoneSecondary": [
       "01612-109008",
       "01918-777345"
     ],
-    "photo": "./src/data/imgs/demodirectorofbranchs.png"
+    "photo": "./src/data/imgs/maksudurdirectorbhola.png"
   },
   "contact": {
-    "address": "ভোলা মুসলিম ইন্সটিটিউট পাবলিক লাইব্রেরি, নতুন বাজার, ভোলা",
+    "address": "ভোলা অফিস ও ক্যাম্পাস: ভোলা মুসলিম ইনস্টিটিউট পাবলিক লাইব্রেরী, নতুন বাজার, ভোলা।",
     "addressEn": "Bhola Muslim Institute Public Library, Notun Bazar, Bhola",
     "district": "Bhola",
     "phones": [
-      "01873-490735",
       "01612-109008",
       "01918-777345"
     ],
-    "email": "mdmaksud77077@gmail.com"
+    "email": "maksudbhola85@gmail.com"
   },
   "admission": {
     "status": "ভর্তি চলছে",

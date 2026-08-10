@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import PopularCourses from "@/components/PopularCourses";
-import directorImg from "@/data/imgs/demodirectorofbranchs.png";
+import directorImg from "@/data/imgs/maksudurdirectorbhola.png";
 
 export default function BranchDetailView({ data }) {
   const [activeTab, setActiveTab] = useState(data?.studentList?.tabs?.[0] ?? null);
