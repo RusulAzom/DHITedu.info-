@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import NoticeBoard from "@/components/NoticeBoard";
+import QuickActions from "@/components/QuickActions";
+import Footer from "@/components/Footer";
 import ServicesGrid from "@/components/ServicesGrid";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import BookBanner from "@/components/BookBanner";
@@ -21,6 +23,7 @@ export default function Home() {
         <div className="mt-4 space-y-4">
           <HeroSection />
           <NoticeBoard />
+          <QuickActions />
           <section className="rounded-[20px] bg-white p-4 shadow-sm ring-1 ring-[var(--color-border)]">
             <h2 className="text-lg font-bold text-gray-900 mb-3">আমাদের সেবা সমূহ</h2>
             <ServicesGrid />
@@ -35,6 +38,16 @@ export default function Home() {
           <FAQSection />
         </div>
       </div>
+      <Footer />
+      <a
+        href="https://wa.me/8801355009341"
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-20 right-4 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition hover:shadow-2xl"
+        aria-label="Chat on WhatsApp"
+      >
+        <span className="text-2xl">🟢</span>
+      </a>
       <BottomNav />
     </main>
   );

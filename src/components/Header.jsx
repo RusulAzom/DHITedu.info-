@@ -5,13 +5,15 @@ import Link from "next/link";
 
 import { courses } from "@/lib/courseData";
 
-const branchLocations = [
-  "ঢাকা সেন্ট্রাল",
-  "চান্দিনা",
-  "ভোলা জেলা",
-  "মণিরামপুর",
-  "পাকেরহাট",
-  "কিশোরগঞ্জ নীলফামারী",
+const branchOptions = [
+  "সকল ব্রাঞ্চ",
+  "ঢাকা সেন্ট্রাল ব্রাঞ্চ",
+  "চান্দিনা ব্রাঞ্চ",
+  "দিনাজপুর-খানসামা ব্রাঞ্চ",
+  "কিশোরগঞ্জ নীলফামারী ব্রাঞ্চ",
+  "ভোলা জেলা ব্রাঞ্চ",
+  "মনিরামপুর ব্রাঞ্চ",
+  "অনলাইন ব্যাচ",
 ];
 
 export default function Header() {
@@ -19,6 +21,8 @@ export default function Header() {
   const [branchesOpen, setBranchesOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
   const [drawerCoursesOpen, setDrawerCoursesOpen] = useState(false);
+  const [branchOpen, setBranchOpen] = useState(false);
+  const [selectedBranch, setSelectedBranch] = useState(branchOptions[0]);
 
   return (
     <>
@@ -39,10 +43,10 @@ export default function Header() {
           </div>
 
           <div className="hidden items-center gap-3 md:flex">
-            <Link href="/online" className="rounded-full bg-[var(--color-primary-green)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-primary-green)/90]">
+            <Link href="/online" className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] transition hover:border-b-2 hover:border-[#0A7F2E] hover:text-[var(--color-primary-green)] pb-1">
               অনলাইন কোর্স
             </Link>
-            <Link href="#" className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]">
+            <Link href="#" className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] transition hover:border-b-2 hover:border-[#0A7F2E] hover:text-[var(--color-primary-green)] pb-1">
               আমাদের সম্পর্কে
             </Link>
             <div className="relative">
@@ -72,9 +76,45 @@ export default function Header() {
                 </div>
               ) : null}
             </div>
-            <Link href="#" className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]">
+            <Link href="#" className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] transition hover:border-b-2 hover:border-[#0A7F2E] hover:text-[var(--color-primary-green)] pb-1">
               ব্লগ
             </Link>
+            <Link
+              href="#"
+              className="rounded-full bg-[#0A7F2E] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-600"
+            >
+              সার্টিফিকেট ভেরিফাই
+            </Link>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setBranchOpen((prev) => !prev)}
+                className="flex items-center gap-2 rounded-full border border-[var(--color-border)] border-b-2 border-emerald-500/20 bg-white px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] shadow-xs shadow-slate-200/50 transition hover:bg-[var(--color-bg-light)]"
+                aria-expanded={branchOpen}
+              >
+                {selectedBranch}
+                <span className="text-xs">▾</span>
+              </button>
+              {branchOpen ? (
+                <div className="absolute left-0 z-20 mt-2 w-[240px] overflow-hidden rounded-[24px] border border-[var(--color-border)] bg-white shadow-xl">
+                  <div className="space-y-1 p-2">
+                    {branchOptions.map((branch) => (
+                      <button
+                        key={branch}
+                        type="button"
+                        onClick={() => {
+                          setSelectedBranch(branch);
+                          setBranchOpen(false);
+                        }}
+                        className="w-full rounded-2xl px-4 py-3 text-left text-sm text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]"
+                      >
+                        {branch}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
 
           <div className="flex-shrink-0 ml-auto">
@@ -136,10 +176,40 @@ export default function Header() {
               <Link href="#" className="block rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]">
                 ব্লগ
               </Link>
-              <Link href="#" className="block rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]">
+              <Link href="#" className="block rounded-2xl bg-[#0A7F2E] px-3 py-3 text-sm font-semibold text-white">
                 সার্টিফিকেট ভেরিফিকেশন
               </Link>
-              <Link href="/profile" className="block rounded-2xl bg-[var(--color-primary-green)] px-3 py-3 text-center text-sm font-semibold text-white">
+              <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-light)] px-3 py-3">
+                <div className="text-sm font-semibold text-[var(--color-text-dark)]">Branch</div>
+                <div className="mt-2">
+                  <button
+                    type="button"
+                    onClick={() => setBranchOpen((prev) => !prev)}
+                    className="flex w-full items-center justify-between rounded-2xl border border-[var(--color-border)] bg-white px-3 py-2 text-sm text-[var(--color-text-dark)]"
+                  >
+                    {selectedBranch}
+                    <span>▾</span>
+                  </button>
+                  {branchOpen ? (
+                    <div className="mt-2 overflow-hidden rounded-[20px] border border-[var(--color-border)] bg-white shadow-sm">
+                      {branchOptions.map((branch) => (
+                        <button
+                          key={branch}
+                          type="button"
+                          onClick={() => {
+                            setSelectedBranch(branch);
+                            setBranchOpen(false);
+                          }}
+                          className="w-full px-3 py-3 text-left text-sm text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]"
+                        >
+                          {branch}
+                        </button>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+              <Link href="/profile" className="block rounded-2xl px-3 py-3 text-center text-sm font-semibold text-[var(--color-text-dark)] transition hover:border-b-2 hover:border-[#0A7F2E] hover:text-[var(--color-primary-green)]">
                 লগইন / সাইনআপ
               </Link>
               <div className="mt-3 flex items-center justify-between gap-3">
