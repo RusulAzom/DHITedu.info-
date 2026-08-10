@@ -83,10 +83,9 @@ export default function ResultPage() {
   const hasResults = resultData && resultData.found;
 
   return (
-    <main className="min-h-screen bg-[var(--color-bg-light)]">
+    <main className="min-h-screen pt-[100px] mb-[100px] px-2 sm:px-4 max-w-5xl mx-auto">
       <Header />
-      <div className="pt-[100px] px-4 max-w-5xl mx-auto">
-        <div className="text-center mb-6">
+      <div className="text-center mb-6">
           <h1 className="text-xl sm:text-2xl font-bold text-emerald-800">
             Dream Health and Information Technology - DHIT
           </h1>
@@ -148,7 +147,6 @@ export default function ResultPage() {
             </div>
           )}
         </div>
-      </div>
       <Footer />
     </main>
   );

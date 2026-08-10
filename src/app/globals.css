@@ -109,6 +109,20 @@ body {
     border-radius: 0 !important;
   }
 
+  #result-print-area .absolute,
+  #result-print-area > div:first-child:not(.relative) {
+    display: none !important;
+  }
+
+  #result-print-area {
+    overflow: visible !important;
+  }
+
+  main {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
   table {
     border-collapse: collapse;
     width: 100%;

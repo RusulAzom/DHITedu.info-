@@ -13,48 +13,62 @@ export default function ResultDisplayCard({ resultData, onPrint, onResetSearch }
         <h3 className="text-base font-semibold text-[var(--color-text-dark)]">Result Details</h3>
       </div>
 
-      <div className="w-full p-2 sm:p-6 rounded-lg bg-white shadow-sm ring-1 ring-[var(--color-border)]" id="result-print-area">
-        <div className="flex flex-col items-center">
+      <div className="w-full p-2 sm:p-6 rounded-lg bg-white shadow-sm ring-1 ring-[var(--color-border)] relative overflow-hidden" id="result-print-area">
+        {/* Watermark Logo */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
           <img
-            src={student.picture_url || `/src/data/result/pics/${student.picture}`}
-            alt={student.name}
-            className="w-32 h-32 rounded-full object-cover border-4 border-emerald-600 mx-auto"
-            onError={(e) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = "/src/data/result/pics/no-photo.png";
-            }}
+            src="/src/data/imgs/dhitlogo.png"
+            alt="DHIT Watermark"
+            className="w-64 sm:w-80 md:w-96 opacity-30 object-contain grayscale-0"
           />
-
-          <h2 className="mt-4 text-xl font-bold text-[var(--color-text-dark)]">{student.name}</h2>
         </div>
 
+        <div className="relative z-10">
+          <div className="mb-4">
+            <h3 className="text-base font-semibold text-[var(--color-text-dark)]">Result Details</h3>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <img
+              src={student.picture_url || `/src/data/result/pics/${student.picture}`}
+              alt={student.name}
+              className="w-32 h-32 rounded-full object-cover border-4 border-emerald-600 mx-auto"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = "/src/data/result/pics/no-photo.png";
+              }}
+            />
+
+            <h2 className="mt-4 text-xl font-bold text-[var(--color-text-dark)]">{student.name}</h2>
+          </div>
+
         <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-light)] px-4 py-3">
+          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
             <div className="text-xs text-[var(--color-text-muted)]">Student Name</div>
             <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{student.name}</div>
           </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-light)] px-4 py-3">
+          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
             <div className="text-xs text-[var(--color-text-muted)]">Father&apos;s Name</div>
             <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{student.father || "-"}</div>
           </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-light)] px-4 py-3">
+          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
             <div className="text-xs text-[var(--color-text-muted)]">Mother&apos;s Name</div>
             <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{student.mother || "-"}</div>
           </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-light)] px-4 py-3">
+          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
             <div className="text-xs text-[var(--color-text-muted)]">Registration No</div>
             <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{student.reg_id}</div>
           </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-light)] px-4 py-3">
+          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
             <div className="text-xs text-[var(--color-text-muted)]">Roll No</div>
             <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{student.roll}</div>
           </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-light)] px-4 py-3">
+          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
             <div className="text-xs text-[var(--color-text-muted)]">Branch</div>
             <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{branch.name}</div>
             <div className="text-xs text-[var(--color-text-muted)]">{branch.address}</div>
           </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-light)] px-4 py-3 sm:col-span-2">
+          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3 sm:col-span-2">
             <div className="text-xs text-[var(--color-text-muted)]">Course</div>
             <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">
               {course_code} - {student.course}
@@ -142,6 +156,7 @@ export default function ResultDisplayCard({ resultData, onPrint, onResetSearch }
           >
             Search Another Student / নতুন রেজাল্ট খুঁজুন
           </button>
+        </div>
         </div>
       </div>
     </div>
