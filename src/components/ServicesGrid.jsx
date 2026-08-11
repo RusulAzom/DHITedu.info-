@@ -11,7 +11,7 @@ const services = [
   { icon: "🏛️", label: "সরকারি চাকরি প্রিপারেশন", href: "https://bcspark.vercel.app", external: true },
   { icon: "📰", label: "লাইভ নিউজ", href: "/" },
   { icon: "🩺", label: "চিকিৎসা কথা", href: "/blog" },
-  { icon: "📜", label: "Certificate Verify", href: "/" },
+  { icon: "📜", label: "Certificate Verify", href: "/result" },
   { icon: "👨‍⚕️", label: "Doctor Booking", disabled: true },
   { icon: "🚑", label: "Ambulance", disabled: true },
 ];

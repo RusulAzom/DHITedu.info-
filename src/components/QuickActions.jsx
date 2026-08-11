@@ -32,7 +32,7 @@ export default function QuickActions() {
     <section className="rounded-[20px] bg-gradient-to-r from-[#0d4b75] to-[#0A7F2E] text-white rounded-2xl p-3 shadow-md">
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
         <Link
-          href="#"
+          href="/result"
           className="rounded-2xl border border-white/20 bg-white/10 p-4 transition hover:bg-white/15"
         >
           <div className="flex items-center gap-3">
@@ -44,7 +44,7 @@ export default function QuickActions() {
           </div>
         </Link>
         <Link
-          href="#"
+          href="/result"
           className="rounded-2xl border border-white/20 bg-white/10 p-4 transition hover:bg-white/15"
         >
           <div className="flex items-center gap-3">
