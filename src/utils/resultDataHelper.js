@@ -8,16 +8,11 @@ function cleanReg(reg) {
 }
 
 function getPictureUrl(pictureField) {
-  const trimmed = clean(pictureField)
-  if (!trimmed) {
-    return '/src/data/result/pics/no-photo.png'
+  const fileName = clean(pictureField);
+  if (!fileName || fileName === "no-photo.png") {
+    return "/result/pics/no-photo.png";
   }
-  // Remove path traversal attempts and invalid characters
-  const sanitized = trimmed.replace(/[\\/]/g, '').replace(/\\.\\./g, '')
-  if (/[^a-zA-Z0-9._\-]/.test(sanitized)) {
-    return '/src/data/result/pics/no-photo.png'
-  }
-  return `/src/data/result/pics/${sanitized}`
+  return `/result/pics/${fileName}`;
 }
 
 function parseTables(parsed) {
@@ -47,6 +42,13 @@ function searchResult(formData = {}, tablesOverride) {
     return { found: false, message: 'No student found with this Registration No' }
   }
 
+  const studentRaw = foundStudent;
+  console.log("Found Raw Student:", studentRaw);
+
+  const fatherName = clean(studentRaw.f_name) || clean(studentRaw.father) || "-";
+  const motherName = clean(studentRaw.m_name) || clean(studentRaw.mother) || "-";
+  const pictureName = clean(studentRaw.picture) || "no-photo.png";
+
   const branch = branches.find((b) => b.branch_id === foundStudent.branch_id) || {}
   const course = courses.find((c) => c.crs_id === foundStudent.crs_id) || {}
   const courseName = clean(course.name)
@@ -61,10 +63,10 @@ function searchResult(formData = {}, tablesOverride) {
     name: clean(foundStudent.name),
     reg_id: cleanReg(foundStudent.reg_id),
     roll: clean(foundStudent.roll),
-    picture: clean(foundStudent.picture),
-    picture_url: getPictureUrl(foundStudent.picture),
-    father: clean(foundStudent.f_name || foundStudent.father),
-    mother: clean(foundStudent.m_name || foundStudent.mother),
+    picture: pictureName,
+    picture_url: getPictureUrl(pictureName),
+    father: fatherName,
+    mother: motherName,
     branch_id: foundStudent.branch_id,
     crs_id: foundStudent.crs_id,
     course_code: course_code,

@@ -10,13 +10,13 @@ function cleanReg(reg) {
 function getPictureUrl(pictureField) {
   const trimmed = clean(pictureField)
   if (!trimmed) {
-    return '/src/data/result/pics/no-photo.png'
+    return '/result/pics/no-photo.png'
   }
   const sanitized = trimmed.replace(/[\\/]/g, '').replace(/\.\./g, '')
   if (/[^a-zA-Z0-9._\-]/.test(sanitized)) {
-    return '/src/data/result/pics/no-photo.png'
+    return '/result/pics/no-photo.png'
   }
-  return `/src/data/result/pics/${sanitized}`
+  return `/result/pics/${sanitized}`
 }
 
 function parseTables(parsed) {
@@ -46,29 +46,44 @@ function searchResult(formData = {}, tablesOverride) {
     return { found: false, message: 'No student found with this Registration No' }
   }
 
+  const studentRaw = foundStudent;
+  console.log("STEP 1 - Raw Student JSON Object:", studentRaw);
+
+  const fatherName = studentRaw.f_name !== undefined && studentRaw.f_name !== null
+    ? clean(studentRaw.f_name)
+    : (studentRaw.father ? clean(studentRaw.father) : "-");
+
+  const motherName = studentRaw.m_name !== undefined && studentRaw.m_name !== null
+    ? clean(studentRaw.m_name)
+    : (studentRaw.mother ? clean(studentRaw.mother) : "-");
+
+  const picFileName = studentRaw.picture !== undefined && studentRaw.picture !== null
+    ? clean(studentRaw.picture)
+    : "no-photo.png";
+
   const branch = branches.find((b) => b.branch_id === foundStudent.branch_id) || {}
   const course = courses.find((c) => c.crs_id === foundStudent.crs_id) || {}
   const course_code = course.name || ''
   const course_full_form = clean(course.full_form)
 
-  const cleanedStudent = {
-    id: foundStudent.id,
-    name: clean(foundStudent.name),
-    dob: foundStudent.dob,
-    sex: foundStudent.sex,
-    reg_id: cleanReg(foundStudent.reg_id),
-    roll: clean(foundStudent.roll),
-    picture: getPictureUrl(foundStudent.picture),
-    f_name: clean(foundStudent.f_name),
-    m_name: clean(foundStudent.m_name),
-    email: clean(foundStudent.email),
-    phone: clean(foundStudent.phone),
-    address: clean(foundStudent.address),
-    crs_id: foundStudent.crs_id,
-    branch_id: foundStudent.branch_id,
+  const student = {
+    id: studentRaw.id,
+    name: clean(studentRaw.name),
+    reg_id: cleanReg(studentRaw.reg_id),
+    roll: clean(studentRaw.roll),
+    father: fatherName || "-",
+    mother: motherName || "-",
+    picture: picFileName,
+    picture_url: getPictureUrl(picFileName),
+    branch_id: clean(studentRaw.branch_id),
+    crs_id: clean(studentRaw.crs_id),
     course_code: course_code,
     course_name: course_full_form,
   }
+
+  console.log("STEP 2 - Final Returned Student Object:", student);
+
+  const cleanedStudent = student;
 
   const studentGrades = grade.filter((g) => cleanReg(g.reg_id) === regInput)
 

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { Mail, Phone, Globe } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ResultCheckForm from "@/components/ResultCheckForm";
@@ -85,30 +84,30 @@ export default function ResultPage() {
   return (
     <main className="min-h-screen pt-[100px] mb-[100px] px-2 sm:px-4 max-w-5xl mx-auto">
       <Header />
-      <div className="text-center mb-6">
-          <h1 className="text-xl sm:text-2xl font-bold text-emerald-800">
+      <div className="flex flex-row items-center gap-2 sm:gap-4 w-full border-b pb-3 mb-4">
+        <div className="shrink-0">
+          <img
+            src="/src/data/imgs/dhitlogo.png"
+            alt="DHIT Logo"
+            className="w-12 h-12 sm:w-20 sm:h-20 object-contain certificate-logo print:block"
+            style={{ WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}
+          />
+        </div>
+
+        <div className="flex-1 min-w-0 text-left flex flex-col justify-center gap-0.5">
+          <h1 className="text-xs sm:text-lg font-bold text-emerald-800 leading-tight truncate sm:whitespace-normal">
             Dream Health and Information Technology - DHIT
           </h1>
-          <p className="text-sm font-semibold text-emerald-600 mt-1">
+          <div className="text-[10px] sm:text-xs font-semibold text-gray-700">
             Govt Approved: সি-১৭০২২৪/২১
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-4 text-xs sm:text-sm text-gray-600 mt-3">
-            <span className="flex items-center gap-1">
-              <Mail className="w-4 h-4 text-emerald-600" /> info@dhitedu.info
-            </span>
-            <span className="flex items-center gap-1">
-              <Phone className="w-4 h-4 text-emerald-600" /> 01355009341
-            </span>
-            <a
-              href="https://www.dhitedu.info"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-1 hover:underline text-emerald-700"
-            >
-              <Globe className="w-4 h-4 text-emerald-600" /> www.dhitedu.info
-            </a>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[9px] sm:text-xs text-gray-600 mt-0.5">
+            <span>✉️ info@dhitedu.info</span>
+            <span>📞 01355009341</span>
+            <span>🌐 www.dhitedu.info</span>
           </div>
         </div>
+      </div>
 
         <div className="w-full p-2 sm:p-6 rounded-lg bg-white shadow-sm ring-1 ring-[var(--color-border)]">
           {!hasResults && (
