@@ -1,0 +1,63 @@
+{
+  "branch": {
+    "id": "monirampur",
+    "name": "Dream Health and Information Technology - Monirampur Branch",
+    "shortName": "DHIT Monirampur",
+    "tagline": "প্রশিক্ষণ নিন, বদলে যাবে দিন। কর্মমুখী শিক্ষা গ্রহণ করি, বেকার মুক্ত জীবন গড়ি।",
+    "govtApproved": true,
+    "govtRegNo": "সি-১৭০২২৪/২১",
+    "govtRegNoShort": "সি-১৭০২২৪/২১"
+  },
+  "director": {
+    "name": "Mohsin",
+    "designation": "Director (DHIT Monirampur)",
+    "email": "monirampur@dhitedu.info",
+    "phonePrimary": "01743916116",
+    "phoneSecondary": ["01926687924"],
+    "photo": "/imgs/mohsindirectormonirampur.png"
+  },
+  "contact": {
+    "address": "নতুন পাইকারী মাছ বাজার, দোলখোলা রোড, মনিরামপুর, যশোর",
+    "addressEn": "New Wholesale Fish Market, Dolkhola Road, Monirampur, Jashore",
+    "district": "Jashore",
+    "phones": ["01743916116", "01926687924"],
+    "email": "monirampur@dhitedu.info"
+  },
+  "admission": {
+    "status": "ভর্তি চলছে",
+    "statusEn": "Admission Going On",
+    "announcement": "প্রতি ডিসেম্বর ও জুনে নতুন ব্যাচে ভর্তি নেওয়া হয়। এসএসসি বা সমমান পাশ যেকোনো গ্রুপ হতে ভর্তি হওয়া যাবে।",
+    "durationOptions": ["6 মাস", "2 বছর", "2.5 বছর", "3 বছর", "4 বছর"]
+  },
+  "availableCourses": [
+    { "code": "DMF", "name": "Diploma in Medical Faculty (4 Years)", "category": "Medical" },
+    { "code": "DMA", "name": "Diploma in Medical Assistant (2.5 Years)", "category": "Medical" },
+    { "code": "DNT", "name": "Diploma in Nursing Technology (4 Years)", "category": "Medical" },
+    { "code": "DMCH", "name": "Diploma in Medical & Child Health", "category": "Medical" },
+    { "code": "DDC", "name": "Diploma in Dental Care", "category": "Medical" },
+    { "code": "LMAFP", "name": "LMAFP Course", "category": "Paramedical" },
+    { "code": "DN", "name": "Diploma Nurse", "category": "Medical" },
+    { "code": "DVD", "name": "Diploma Veterinary Doctor", "category": "Veterinary" },
+    { "code": "DH", "name": "Diploma Homeopathy", "category": "Alternative Medicine" },
+    { "code": "UA", "name": "Unani & Ayurvedic", "category": "Alternative Medicine" }
+  ],
+  "courseDurations": ["6 মাস", "2 বছর", "2.5 বছর", "3 বছর", "4 বছর"],
+  "studentList": {
+    "title": "Student Lists",
+    "titleBn": "শিক্ষার্থী তালিকা",
+    "previewType": "googleDocsEmbed",
+    "tabs": [
+      {
+        "id": "all-batches",
+        "label": "সকল ব্যাচ",
+        "url": "https://docs.google.com/document/d/e/2PACX-1vRyidGzfk8bnVVsnReGMOWbmMBdlO7UAzHof2xXSsdTzLP0HqTHLWTlcO7fgo7irpzRmV7KoJ_b-QFE/pub",
+        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vRyidGzfk8bnVVsnReGMOWbmMBdlO7UAzHof2xXSsdTzLP0HqTHLWTlcO7fgo7irpzRmV7KoJ_b-QFE/pub?embedded=true"
+      }
+    ]
+  },
+  "seo": {
+    "slug": "monirampur",
+    "metaTitle": "DHIT Monirampur Branch - Dream Health and Information Technology",
+    "metaDescription": "Dream Health and Information Technology মনিরামপুর শাখা, যশোর। বিস্তারিত কোর্স তথ্য, ভর্তি নির্দেশিকা ও শিক্ষার্থী তালিকা।"
+  }
+}

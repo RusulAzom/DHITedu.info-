@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import PopularCourses from "@/components/PopularCourses";
-import directorImg from "@/data/imgs/maksudurdirectorbhola.png";
 
 export default function BranchDetailView({ data }) {
   const [activeTab, setActiveTab] = useState(data?.studentList?.tabs?.[0] ?? null);
@@ -21,6 +20,13 @@ export default function BranchDetailView({ data }) {
   const contactPhones = contact.phones || [];
   const mapAddress = contact.addressEn || contact.address || "";
   const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapAddress)}`;
+
+  const directorPhotoSrc = (() => {
+    const raw = data?.director?.photo;
+    if (!raw) return "/imgs/no-photo.png";
+    if (raw.startsWith("/")) return raw;
+    return `/imgs/${raw.replace(/^\.\/?src\/data\/imgs\//, "")}`;
+  })();
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
@@ -59,7 +65,7 @@ export default function BranchDetailView({ data }) {
           <div className="flex items-center justify-center">
             {director.photo ? (
               <Image
-                src={directorImg}
+                src={directorPhotoSrc}
                 alt={director.name}
                 width={160}
                 height={160}
