@@ -1,11 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import PopularCourses from "@/components/PopularCourses";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import BottomNav from "@/components/BottomNav";
 
 export default function BranchDetailView({ data }) {
   const [activeTab, setActiveTab] = useState(data?.studentList?.tabs?.[0] ?? null);
+  const [imgError, setImgError] = useState(false);
 
   if (!data) return <div className="p-6">Branch data not provided.</div>;
 
@@ -29,8 +32,10 @@ export default function BranchDetailView({ data }) {
   })();
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8">
-      <header className="w-full rounded-2xl bg-gradient-to-r from-[#004B82] via-[#0A7F2E] to-[#0A9A88] p-4 sm:p-6 text-white shadow-lg">
+    <>
+      <Header />
+      <div className="mx-auto max-w-5xl px-4 py-8 pt-24">
+        <header className="w-full rounded-2xl bg-gradient-to-r from-[#004B82] via-[#0A7F2E] to-[#0A9A88] p-4 sm:p-6 text-white shadow-lg">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1 className="text-xl sm:text-2xl font-bold leading-tight">{branch.name || branch.fullName}</h1>
@@ -64,12 +69,11 @@ export default function BranchDetailView({ data }) {
 
           <div className="flex items-center justify-center">
             {director.photo ? (
-              <Image
-                src={directorPhotoSrc}
-                alt={director.name}
-                width={160}
-                height={160}
+              <img
+                src={imgError ? "/imgs/no-photo.png" : directorPhotoSrc}
+                alt={director.name || "Director"}
                 className="w-40 h-40 rounded-2xl object-cover shadow-md border-2 border-emerald-500/20 mx-auto"
+                onError={() => setImgError(true)}
               />
             ) : (
               <div className="flex h-40 w-40 items-center justify-center rounded-2xl border-2 border-dashed border-emerald-500/30 bg-slate-50 text-4xl font-black text-emerald-600/40">
@@ -160,6 +164,9 @@ export default function BranchDetailView({ data }) {
           </div>
         </aside>
       </main>
-    </div>
+      </div>
+      <Footer />
+      <BottomNav />
+    </>
   );
 }

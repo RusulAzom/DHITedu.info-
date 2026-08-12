@@ -36,23 +36,32 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 z-50 w-full px-4 py-3 flex items-center justify-between shadow-sm bg-white">
-        <div className="flex w-full items-center justify-between overflow-hidden">
-          <div className="flex items-center gap-3 min-w-0">
-            <button
-              type="button"
-              onClick={() => setDrawerOpen(true)}
-              className="flex-shrink-0 flex h-[44px] w-[44px] items-center justify-center rounded-full bg-white text-[var(--color-text-dark)] shadow-sm md:hidden"
-              aria-label="Open menu"
-            >
-              ☰
-            </button>
-            <div className="min-w-0">
-              <a href="/" className="text-lg font-black text-[var(--color-primary-green)]">
-                DHITedu
-              </a>
-            </div>
-          </div>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm w-full overflow-x-hidden">
+        <div className="flex items-center justify-between w-full px-2 py-2">
+          <button
+            type="button"
+            onClick={() => setDrawerOpen(!drawerOpen)}
+            className="flex flex-col items-center justify-center p-1 rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors md:hidden"
+            aria-label="Toggle Menu"
+          >
+            <svg className="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <span className="text-[8px] font-semibold tracking-wider uppercase text-slate-600 mt-0.5">
+              MENU
+            </span>
+          </button>
+
+          <Link className="flex items-center gap-1.5 mx-auto" href="/">
+            <img
+              src="/imgs/dhitlogo.png"
+              alt="DHIT Logo"
+              className="h-7 w-auto object-contain"
+            />
+            <span className="text-base font-bold text-emerald-800 tracking-tight">
+              DHITedu
+            </span>
+          </Link>
 
           <div className="hidden items-center gap-3 md:flex">
             <Link href="/online" className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] transition hover:border-b-2 hover:border-[#0A7F2E] hover:text-[var(--color-primary-green)] pb-1">
@@ -77,7 +86,7 @@ export default function Header() {
                     {courses.map((course) => (
                       <Link
                         key={course.title}
-                        href="/courses"
+                        href={`/course/${course.slug}`}
                         className="block rounded-2xl px-3 py-3 text-sm text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]"
                       >
                         <div className="font-semibold">{course.title}</div>
@@ -129,7 +138,7 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="flex-shrink-0 ml-auto">
+          <div className="flex-shrink-0 flex items-center gap-2">
             <div className="relative inline-flex items-center p-1.5 bg-green-50 rounded-full border border-green-200">
               <span className="text-base">💰</span>
               <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm">
@@ -178,7 +187,7 @@ export default function Header() {
                     {courses.map((course) => (
                       <Link
                         key={course.title}
-                        href="/courses"
+                        href={`/course/${course.slug}`}
                         className="block rounded-xl px-3 py-2 text-sm text-[var(--color-text-muted)] transition hover:bg-white hover:text-[var(--color-text-dark)]"
                       >
                         <div className="font-semibold">{course.title}</div>

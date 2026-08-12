@@ -3,7 +3,13 @@
 import React from "react";
 import Link from "next/link";
 
-export default function PopularCourses({ courses = [], title = "জনপ্রিয় কোর্স" }) {
+export default function PopularCourses({
+  courses = [],
+  title = "জনপ্রিয় কোর্স",
+}: {
+  courses?: { title?: string; name?: string; duration?: string; code?: string; category?: string }[];
+  title?: string;
+}) {
   const items = courses.map((c) => ({
     title: c.title || c.name,
     duration: c.duration,

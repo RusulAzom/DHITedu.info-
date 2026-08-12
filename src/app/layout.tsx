@@ -2,8 +2,13 @@ import "./globals.css";
 import ClientRoot from "@/components/ClientRoot";
 
 export const metadata = {
-  title: "DHIT e-Care Web Portal",
-  description: "Mobile-first admin portal for DHIT e-Care",
+  title: "DHITedu - Dream Health and Information Technology",
+  description: "Official Portal of Dream Health and Information Technology",
+  icons: {
+    icon: "/imgs/favicon.ico",
+    shortcut: "/imgs/favicon.ico",
+    apple: "/imgs/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

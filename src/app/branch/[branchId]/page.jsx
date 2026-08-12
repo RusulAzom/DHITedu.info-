@@ -31,12 +31,16 @@ export default async function Page({ params }) {
   const { branchId } = params ?? {};
   if (!isValidSlug(branchId)) return notFound();
 
+  let data = null;
   try {
     const mod = await import(`@/data/branch/${branchId}.json`);
-    const data = mod?.default ?? mod;
-    return <BranchDetailView data={data} />;
+    data = mod?.default ?? mod;
   } catch (err) {
     console.error("Branch import failed:", err);
     return notFound();
   }
+
+  if (!data || typeof data !== "object") return notFound();
+
+  return <BranchDetailView data={data} />;
 }

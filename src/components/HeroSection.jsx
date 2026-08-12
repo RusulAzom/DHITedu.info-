@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const slides = [
   {
     badge: "DHIT - Dream Health and Information Technology",
-    title: "স্বচ্ছ ও বাস্তবভিত্তিক গ্রামীণ চিকিৎসা প্রশিক্ষণ",
+    title: "আধুনিক পল্লীচিকিৎসক ও IT Skill প্রশিক্ষণ কেন্দ্র",
     subtitle: "আমাদের লক্ষ্য সার্টিফিকেট বিক্রি নয়, আপনাকে দক্ষ পল্লী ডাক্তার হিসেবে গড়ে তোলা। প্রতিটি নিকটস্থ সেন্টারে সরাসরি অফলাইন প্র্যাকটিক্যাল ক্লাস অনুষ্ঠিত হয়।",
   },
   {
