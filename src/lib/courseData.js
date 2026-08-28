@@ -1,5 +1,5 @@
 export const courses = [
-  { slug: "rmp", title: "R.M.P / E.K.M.S", duration: "৬ মাস" },
+  { slug: "rmp", title: "R.M.P", duration: "৬ মাস" },
   { slug: "mch", title: "M.C.H (মা ও শিশু স্বাস্থ্য)", duration: "৬ মাস" },
   { slug: "nursing", title: "Nursing / নার্সিং", duration: "২ বছর" },
   { slug: "paramedical", title: "Paramedical / প্যারামেডিকেল", duration: "১ বছর" },
