@@ -63,7 +63,7 @@ export default function BranchDetailView({ data }) {
         <div className="mt-4 flex flex-col items-center gap-4 max-w-full overflow-hidden">
           <div className="w-full max-w-full rounded-xl bg-emerald-50 p-4 text-center">
             <p className="text-sm leading-7 text-slate-700 break-words">
-              &ldquo;আমরা সবসময় মানুষের সেবার জন্য বেস্ট এফোর্ট দিয়ে থাকি। মানুষের কল্যাণে আমরা নিবেদিত। সেরা প্র্যাকটিক্যাল লার্নিং এর জন্য আজই ভর্তি হন DHIT {branch.shortName || branch.name || ""} এ।&rdquo;
+              &ldquo;আমরা সবসময় নবীন পল্লী-চিকিৎসকদের জন্য বেস্ট এফোর্ট দিয়ে থাকি। মানুষের কল্যাণে আমরা নিবেদিত। সেরা প্র্যাকটিক্যাল লার্নিং এর জন্য আজই ভর্তি হন DHIT {branch.shortName || branch.name || ""} এ।&rdquo;
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export default function BranchDetailView({ data }) {
         <section className="md:col-span-2 space-y-6">
 
           <div className="rounded-xl bg-white p-4 shadow-sm">
-            <h2 className="text-lg font-semibold">Student Lists</h2>
+            <h2 className="text-lg font-semibold">সকল শিক্ষার্থী তালিকা </h2>
             <div className="mt-3">
               <div className="flex flex-wrap gap-2">
                 {studentList.tabs?.map((t) => (

@@ -44,3 +44,12 @@ export default async function Page({ params }) {
 
   return <BranchDetailView data={data} />;
 }
+
+export async function generateStaticParams() {
+  // আপনার সম্ভাব্য সকল branchId-র লিস্ট এখানে দিবেন
+  return [
+    { branchId: 'main' },
+    { branchId: 'branch-1' },
+    // প্রয়োজন অনুযায়ী অন্যান্য আইডি
+  ];
+}
