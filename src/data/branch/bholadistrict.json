@@ -84,64 +84,72 @@
     "titleBn": "ছাত্র-ছাত্রীদের তালিকা",
     "previewType": "googleDocsEmbed",
     "tabs": [
-      {
-        "id": "batch-2022",
-        "label": "2022 Batch",
-        "labelBn": "২০২২ ব্যাচ",
-        "year": "2022",
-        "url": "https://docs.google.com/document/d/e/2PACX-1vQyou6H4DlPhpk53bQVHlfmbNJv1GzJIWEH1paFJmkMudlJ_5gayoGC0JMqJt9xVMTB-dstTs7Mrx7R/pub",
-        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vQyou6H4DlPhpk53bQVHlfmbNJv1GzJIWEH1paFJmkMudlJ_5gayoGC0JMqJt9xVMTB-dstTs7Mrx7R/pub?embedded=true"
-      },
-      {
-        "id": "batch-2023",
-        "label": "2023 Batch",
-        "labelBn": "২০২৩ ব্যাচ",
-        "year": "2023",
-        "url": "https://docs.google.com/document/d/e/2PACX-1vR6xqx3EnVTvdgafapBmI_OqEnnL3gZCaQ08mMXZEPHyqXanlkP1d9AAZ5btWpUD58Vdnh7_dKrjUwb/pub",
-        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vR6xqx3EnVTvdgafapBmI_OqEnnL3gZCaQ08mMXZEPHyqXanlkP1d9AAZ5btWpUD58Vdnh7_dKrjUwb/pub?embedded=true"
-      },
-      {
-        "id": "batch-2023-24",
-        "label": "2023/24 Batch",
-        "labelBn": "২০২৩/২৪ ব্যাচ",
-        "year": "2023-24",
-        "url": "https://docs.google.com/document/d/e/2PACX-1vT1qjX7kuaDRdXpBzKPGb7tpgScHKi5qofql1xUAf0gT9rIHvH98qZlvnBAELRPYFQHQJrYO7YxUG2x/pub",
-        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vT1qjX7kuaDRdXpBzKPGb7tpgScHKi5qofql1xUAf0gT9rIHvH98qZlvnBAELRPYFQHQJrYO7YxUG2x/pub?embedded=true"
-      },
-      {
-        "id": "batch-2024",
-        "label": "2024 Batch",
-        "labelBn": "২০২৪ ব্যাচ",
-        "year": "2024",
-        "url": "https://docs.google.com/document/d/e/2PACX-1vSv5LmOZa94wphodNE5jvKI_8hn__qyPa0pUYl9-aLW_1jA0yOTjmULDM4BySiYeukWtpGB4Eyf_h5f/pub",
-        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vSv5LmOZa94wphodNE5jvKI_8hn__qyPa0pUYl9-aLW_1jA0yOTjmULDM4BySiYeukWtpGB4Eyf_h5f/pub?embedded=true"
-      },
-      {
-        "id": "batch-2024-25",
-        "label": "2024/25 Batch",
-        "labelBn": "২০২৪/২৫ ব্যাচ",
-        "year": "2024-25",
-        "url": "https://docs.google.com/document/d/e/2PACX-1vTAzqy_r5NDovFpzFX8esr0TNGfMris_6zBfuDwByko_iM_NaEWfqJzEoiogerTgEVsWwUL34EuGtUG/pub",
-        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vTAzqy_r5NDovFpzFX8esr0TNGfMris_6zBfuDwByko_iM_NaEWfqJzEoiogerTgEVsWwUL34EuGtUG/pub?embedded=true"
-      },
-      {
-        "id": "batch-2025",
-        "label": "2025 Batch",
-        "labelBn": "২০২৫ ব্যাচ",
-        "year": "2025",
-        "url": "https://docs.google.com/document/d/e/2PACX-1vQWEZOLVyX3vUSIA46CzCrHzZbRS_sNxWAPugXYjUTUJO8jcV5IjFs9HsXfp4KwoDT_p_5pF3B-fFk4/pub",
-        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vQWEZOLVyX3vUSIA46CzCrHzZbRS_sNxWAPugXYjUTUJO8jcV5IjFs9HsXfp4KwoDT_p_5pF3B-fFk4/pub?embedded=true"
-      },
-      {
-        "id": "batch-2025-26",
-        "label": "2025/26 Batch",
-        "labelBn": "২০২৫/২৬ ব্যাচ",
-        "year": "2025-26",
-        "originalLabel": "2025/25 batch",
-        "url": "https://docs.google.com/document/d/e/2PACX-1vS_Xvwx0XXU5BFHyX5Sk5StshCyXXgisXKM89N_mos8DQnZKfOccVu-yB-RvSLOM4WBKEEPzI9_KLxd/pub",
-        "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vS_Xvwx0XXU5BFHyX5Sk5StshCyXXgisXKM89N_mos8DQnZKfOccVu-yB-RvSLOM4WBKEEPzI9_KLxd/pub?embedded=true"
-      }
-    ]
+    {
+      "id": "batch-2026",
+      "label": "2026 Batch",
+      "labelBn": "২০২৬ ব্যাচ",
+      "year": "2026",
+      "url": "https://docs.google.com/document/d/e/2PACX-1vSpWdEdbn-Bp90WKyCVYlkLjegajPk2EpIJfv6irvs4paVfOUvbdAESx6Ay369Ej_SaH8ogeYdpkvsH/pub",
+      "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vSpWdEdbn-Bp90WKyCVYlkLjegajPk2EpIJfv6irvs4paVfOUvbdAESx6Ay369Ej_SaH8ogeYdpkvsH/pub?embedded=true"
+    },
+    {
+      "id": "batch-2025-26",
+      "label": "2025/26 Batch",
+      "labelBn": "২০২৫/২৬ ব্যাচ",
+      "year": "2025-26",
+      "originalLabel": "2025/25 batch",
+      "url": "https://docs.google.com/document/d/e/2PACX-1vS_Xvwx0XXU5BFHyX5Sk5StshCyXXgisXKM89N_mos8DQnZKfOccVu-yB-RvSLOM4WBKEEPzI9_KLxd/pub",
+      "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vS_Xvwx0XXU5BFHyX5Sk5StshCyXXgisXKM89N_mos8DQnZKfOccVu-yB-RvSLOM4WBKEEPzI9_KLxd/pub?embedded=true"
+    },
+    {
+      "id": "batch-2025",
+      "label": "2025 Batch",
+      "labelBn": "২০২৫ ব্যাচ",
+      "year": "2025",
+      "url": "https://docs.google.com/document/d/e/2PACX-1vQWEZOLVyX3vUSIA46CzCrHzZbRS_sNxWAPugXYjUTUJO8jcV5IjFs9HsXfp4KwoDT_p_5pF3B-fFk4/pub",
+      "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vQWEZOLVyX3vUSIA46CzCrHzZbRS_sNxWAPugXYjUTUJO8jcV5IjFs9HsXfp4KwoDT_p_5pF3B-fFk4/pub?embedded=true"
+    },
+    {
+      "id": "batch-2024-25",
+      "label": "2024/25 Batch",
+      "labelBn": "২০২৪/২৫ ব্যাচ",
+      "year": "2024-25",
+      "url": "https://docs.google.com/document/d/e/2PACX-1vTAzqy_r5NDovFpzFX8esr0TNGfMris_6zBfuDwByko_iM_NaEWfqJzEoiogerTgEVsWwUL34EuGtUG/pub",
+      "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vTAzqy_r5NDovFpzFX8esr0TNGfMris_6zBfuDwByko_iM_NaEWfqJzEoiogerTgEVsWwUL34EuGtUG/pub?embedded=true"
+    },
+    {
+      "id": "batch-2024",
+      "label": "2024 Batch",
+      "labelBn": "২০২৪ ব্যাচ",
+      "year": "2024",
+      "url": "https://docs.google.com/document/d/e/2PACX-1vSv5LmOZa94wphodNE5jvKI_8hn__qyPa0pUYl9-aLW_1jA0yOTjmULDM4BySiYeukWtpGB4Eyf_h5f/pub",
+      "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vSv5LmOZa94wphodNE5jvKI_8hn__qyPa0pUYl9-aLW_1jA0yOTjmULDM4BySiYeukWtpGB4Eyf_h5f/pub?embedded=true"
+    },
+    {
+      "id": "batch-2023-24",
+      "label": "2023/24 Batch",
+      "labelBn": "২০২৩/২৪ ব্যাচ",
+      "year": "2023-24",
+      "url": "https://docs.google.com/document/d/e/2PACX-1vT1qjX7kuaDRdXpBzKPGb7tpgScHKi5qofql1xUAf0gT9rIHvH98qZlvnBAELRPYFQHQJrYO7YxUG2x/pub",
+      "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vT1qjX7kuaDRdXpBzKPGb7tpgScHKi5qofql1xUAf0gT9rIHvH98qZlvnBAELRPYFQHQJrYO7YxUG2x/pub?embedded=true"
+    },
+    {
+      "id": "batch-2023",
+      "label": "2023 Batch",
+      "labelBn": "২০২৩ ব্যাচ",
+      "year": "2023",
+      "url": "https://docs.google.com/document/d/e/2PACX-1vR6xqx3EnVTvdgafapBmI_OqEnnL3gZCaQ08mMXZEPHyqXanlkP1d9AAZ5btWpUD58Vdnh7_dKrjUwb/pub",
+      "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vR6xqx3EnVTvdgafapBmI_OqEnnL3gZCaQ08mMXZEPHyqXanlkP1d9AAZ5btWpUD58Vdnh7_dKrjUwb/pub?embedded=true"
+    },
+    {
+      "id": "batch-2022",
+      "label": "2022 Batch",
+      "labelBn": "২০২২ ব্যাচ",
+      "year": "2022",
+      "url": "https://docs.google.com/document/d/e/2PACX-1vQyou6H4DlPhpk53bQVHlfmbNJv1GzJIWEH1paFJmkMudlJ_5gayoGC0JMqJt9xVMTB-dstTs7Mrx7R/pub",
+      "embedUrl": "https://docs.google.com/document/d/e/2PACX-1vQyou6H4DlPhpk53bQVHlfmbNJv1GzJIWEH1paFJmkMudlJ_5gayoGC0JMqJt9xVMTB-dstTs7Mrx7R/pub?embedded=true"
+    }
+  ]
   },
   "seo": {
     "slug": "bhola",
