@@ -1,6 +1,6 @@
 .workspace {
   display: grid;
-  grid-template-columns: minmax(270px, 360px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, min(360px, 38%)) minmax(0, 1fr);
   align-items: start;
   gap: 1.25rem;
 }
@@ -15,7 +15,7 @@
 
 .preview {
   min-width: 0;
-  overflow: auto;
+  overflow: hidden;
   padding: 1rem;
   border-radius: 1rem;
   background: #d7d0bc;
@@ -69,16 +69,29 @@
 
 .watermark {
   position: absolute;
-  inset: 45% -20%;
-  display: grid;
-  place-items: center;
+  inset: -10% -25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   color: #1a2a6c;
-  font-size: clamp(1.25rem, 3vw, 2rem);
-  font-weight: 800;
-  opacity: 0.045;
-  transform: rotate(-24deg);
-  white-space: nowrap;
+  opacity: 0.065;
+  transform: rotate(-18deg) scale(1.12);
   pointer-events: none;
+}
+
+.watermarkRow {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  color: inherit;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.watermarkRow:nth-child(even) {
+  padding-left: 2rem;
 }
 
 .cardContent {
@@ -175,6 +188,8 @@
 
 .detailsTable {
   width: 100%;
+  min-width: 0;
+  table-layout: fixed;
   border-collapse: collapse;
 }
 
@@ -201,6 +216,7 @@
 
 .detailsTable td:last-child {
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .photoColumn {
@@ -294,16 +310,20 @@
 }
 
 @media (max-width: 560px) {
+  .editor {
+    padding: 1rem;
+  }
+
   .preview {
-    padding: 0.4rem;
+    padding: 0.5rem;
   }
 
   .outerBorder {
-    padding: 6px;
+    padding: 5px;
   }
 
   .cardContent {
-    padding: 14px 12px;
+    padding: 12px 9px;
   }
 
   .cardHeader {
@@ -311,47 +331,69 @@
   }
 
   .logo {
-    flex-basis: 40px;
-    width: 40px;
-    height: 40px;
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .instituteTitle {
+    font-size: 0.68rem;
+  }
+
+  .banglaTitle {
+    font-size: 0.68rem;
+  }
+
+  .serialBar {
+    gap: 0.4rem;
+    font-size: 0.58rem;
+  }
+
+  .bodyRow {
+    gap: 5px;
   }
 
   .detailsTable th,
   .detailsTable td {
-    padding: 3px 0;
-    font-size: 0.62rem;
+    padding: 3px 1px;
+    font-size: 0.56rem;
   }
 
   .detailsTable th {
-    font-size: 0.58rem;
+    width: 29%;
+    font-size: 0.53rem;
   }
 
   .photoColumn {
-    flex-basis: 76px;
+    flex: 0 0 64px;
   }
 
   .photoFrame {
-    width: 70px;
-    height: 90px;
+    width: 60px;
+    height: 76px;
   }
 
   .instructions {
-    font-size: 0.5rem;
+    font-size: 0.46rem;
   }
 
   .signature {
-    flex-basis: 110px;
-    font-size: 0.52rem;
+    flex-basis: 92px;
+    font-size: 0.46rem;
   }
 
   .signatureLine {
-    width: 105px;
+    width: 88px;
+  }
+
+  .signatureScript {
+    font-size: 1.1rem;
   }
 }
 
 @page {
   size: A4 portrait;
-  margin: 8mm;
+  margin: 10mm;
 }
 
 @media print {
@@ -366,25 +408,77 @@
 
   .printArea {
     position: fixed !important;
-    inset: 0 auto auto 0 !important;
+    inset: 0 !important;
     width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
     overflow: visible !important;
     padding: 0 !important;
     background: white !important;
+    z-index: 99999 !important;
   }
 
   .card {
+    width: 100%;
     max-width: none;
+    margin: 0;
+    overflow: visible;
     box-shadow: none;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
+  }
+
+  .cardHeader,
+  .cardFooter {
+    display: flex !important;
+    visibility: visible !important;
+  }
+
+  .detailsTable {
+    width: 100% !important;
+    table-layout: fixed !important;
+  }
+
+  .detailsTable th,
+  .detailsTable td {
+    border: 0 !important;
+    padding: 4px 0 !important;
+    font-size: 0.72rem !important;
+  }
+
+  .detailsTable th {
+    width: 28% !important;
+  }
+
+  .card,
+  .outerBorder,
+  .innerBorder,
+  .cardContent,
+  .bodyRow,
+  .cardFooter {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
 
   .outerBorder {
     padding: 0;
   }
 
+  .innerBorder {
+    overflow: visible;
+  }
+
   .cardContent {
     padding: 18px 24px;
+  }
+
+  .logo {
+    max-width: 68px !important;
+    max-height: 68px !important;
+  }
+
+  .photoFrame img {
+    max-width: none !important;
+    max-height: none !important;
   }
 }

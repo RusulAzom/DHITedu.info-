@@ -251,7 +251,13 @@ export default function AdmitCardGenerator() {
           <article className={styles.card}>
             <div className={styles.outerBorder}>
               <div className={styles.innerBorder}>
-                <div className={styles.watermark} aria-hidden="true">DHITedu · DREAM HEALTH &amp; INFORMATION TECHNOLOGY</div>
+                <div className={styles.watermark} aria-hidden="true">
+                  {Array.from({ length: 8 }, (_, row) => (
+                    <div className={styles.watermarkRow} key={row}>
+                      {Array.from({ length: 8 }, (_, word) => <span key={word}>DHITedu</span>)}
+                    </div>
+                  ))}
+                </div>
                 <div className={styles.cardContent}>
                   <header className={styles.cardHeader}>
                     <Image src="/imgs/dhitlogo.png" alt="DHIT logo" width={68} height={68} className={styles.logo} />
