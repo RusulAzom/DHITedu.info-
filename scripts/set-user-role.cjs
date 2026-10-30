@@ -1,5 +1,11 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+
+const path = require("node:path");
+const dotenv = require("dotenv");
 const { cert, getApps, initializeApp } = require("firebase-admin/app");
 const { getAuth } = require("firebase-admin/auth");
+
+dotenv.config({ path: path.resolve(__dirname, "..", ".env.local") });
 
 const roles = new Set(["super_admin", "branch_manager", "student"]);
 const [email, role, branchId, regId] = process.argv.slice(2);

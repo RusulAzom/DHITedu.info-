@@ -13,7 +13,9 @@ Assign roles as Firebase Auth custom claims. Supported roles are `super_admin`, 
 - `branchId`: a branch slug or `branch.id` found in a checked-in branch JSON file.
 - `regId`: the student's `reg_id` in `src/data/result/student/student_info.json`.
 
-Set server environment variables `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY`, and `NEXT_PUBLIC_FIREBASE_API_KEY`. Never expose the service-account private key using a `NEXT_PUBLIC_` name. Enable Email/Password in Firebase Authentication.
+Set the public Firebase web configuration variables `NEXT_PUBLIC_FIREBASE_API_KEY`, `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`, `NEXT_PUBLIC_FIREBASE_PROJECT_ID`, `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`, `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`, `NEXT_PUBLIC_FIREBASE_APP_ID`, and `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID`. Set these in the repository-root `.env.local` for local development and in the deployment environment before building.
+
+The login API also requires the server-only Firebase Admin variables `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, and `FIREBASE_PRIVATE_KEY`. Never expose the service-account private key using a `NEXT_PUBLIC_` name. These Admin credentials are distinct from the public web configuration. Enable Email/Password in Firebase Authentication.
 
 Use the Admin SDK script to assign a claim set:
 

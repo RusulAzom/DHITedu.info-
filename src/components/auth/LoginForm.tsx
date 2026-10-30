@@ -29,7 +29,8 @@ export default function LoginForm() {
 
       router.replace(result.redirectTo);
       router.refresh();
-    } catch {
+    } catch (error) {
+      console.error("Login request failed:", error);
       setError("Unable to reach the sign in service. Please try again.");
     } finally {
       setPending(false);

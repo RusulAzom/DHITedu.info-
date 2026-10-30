@@ -5,6 +5,19 @@ import { SESSION_COOKIE, SESSION_DURATION_MS } from "@/lib/auth/session";
 
 export const runtime = "nodejs";
 
+type FirebaseSignInResponse = {
+  error?: { message?: string };
+  idToken?: string;
+  localId?: string;
+};
+
+function getErrorCode(error: unknown): string {
+  if (typeof error === "object" && error !== null && "code" in error && typeof error.code === "string") {
+    return error.code;
+  }
+  return error instanceof Error ? error.name : "UNKNOWN_ERROR";
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -29,11 +42,16 @@ export async function POST(request: Request) {
       body: JSON.stringify({ email, password, returnSecureToken: true }),
       cache: "no-store",
     });
+    const authData = (await authResponse.json()) as FirebaseSignInResponse;
+
     if (!authResponse.ok) {
+      console.error("Firebase sign-in rejected:", {
+        status: authResponse.status,
+        code: authData.error?.message || "UNKNOWN_ERROR",
+      });
       return NextResponse.json({ error: "Invalid username or password." }, { status: 401 });
     }
 
-    const authData = (await authResponse.json()) as { idToken?: string; localId?: string };
     if (!authData.idToken || !authData.localId) {
       return NextResponse.json({ error: "Unable to sign in." }, { status: 401 });
     }
@@ -54,7 +72,10 @@ export async function POST(request: Request) {
     });
     return response;
   } catch (error) {
-    console.error("Login failed:", error);
+    console.error("Login failed:", {
+      code: getErrorCode(error),
+      message: error instanceof Error ? error.message : "Unknown error",
+    });
     return NextResponse.json({ error: "Sign in is temporarily unavailable." }, { status: 500 });
   }
 }

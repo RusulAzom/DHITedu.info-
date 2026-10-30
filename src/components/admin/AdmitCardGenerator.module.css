@@ -1,0 +1,390 @@
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(270px, 360px) minmax(0, 1fr);
+  align-items: start;
+  gap: 1.25rem;
+}
+
+.editor {
+  padding: 1.25rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 5%);
+}
+
+.preview {
+  min-width: 0;
+  overflow: auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #d7d0bc;
+}
+
+.card {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 90%), rgb(244 236 220 / 96%)),
+    #fdfaf3;
+  color: #1c1208;
+  box-shadow: 0 8px 35px rgb(0 0 0 / 24%);
+  font-family: Arial, "Noto Sans Bengali", sans-serif;
+}
+
+.outerBorder {
+  padding: 10px;
+}
+
+.innerBorder {
+  position: relative;
+  overflow: hidden;
+  border: 2.5px solid #2c3e7a;
+}
+
+.innerBorder::before,
+.innerBorder::after {
+  position: absolute;
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  border-color: #8b1a1a;
+  border-style: solid;
+  content: "";
+  pointer-events: none;
+}
+
+.innerBorder::before {
+  top: 4px;
+  left: 4px;
+  border-width: 2px 0 0 2px;
+}
+
+.innerBorder::after {
+  right: 4px;
+  bottom: 4px;
+  border-width: 0 2px 2px 0;
+}
+
+.watermark {
+  position: absolute;
+  inset: 45% -20%;
+  display: grid;
+  place-items: center;
+  color: #1a2a6c;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 800;
+  opacity: 0.045;
+  transform: rotate(-24deg);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+  padding: 22px 28px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+  padding-bottom: 9px;
+  border-bottom: 2px solid #2c3e7a;
+  text-align: center;
+}
+
+.logo {
+  flex: 0 0 68px;
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+}
+
+.headerText {
+  flex: 1;
+  min-width: 0;
+}
+
+.instituteTitle {
+  margin: 0;
+  color: #1a2a6c;
+  font-family: Georgia, serif;
+  font-size: clamp(0.75rem, 2.3vw, 1.18rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.banglaTitle {
+  margin: 2px 0;
+  color: #8b1a1a;
+  font-size: clamp(0.75rem, 2vw, 1.05rem);
+  font-weight: 700;
+}
+
+.instituteSub,
+.approval {
+  margin: 2px 0;
+  color: #5a4a2a;
+  font-size: clamp(0.53rem, 1.3vw, 0.68rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.approval {
+  color: #198754;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 20px;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 2px;
+  background: linear-gradient(135deg, #8b1a1a, #6b1010);
+  box-shadow: 0 2px 6px rgb(100 20 20 / 30%);
+  color: #f5ecd7;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.serialBar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 6px;
+  padding: 4px 6px;
+  border: 1px solid rgb(44 62 122 / 15%);
+  background: rgb(0 0 0 / 4%);
+  color: #4a3b1a;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.bodyRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.detailsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detailsTable th,
+.detailsTable td {
+  padding: 4px 0;
+  color: #1c1208;
+  font-size: 0.76rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.detailsTable th {
+  width: 28%;
+  color: #3a2a0a;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.detailsTable td:nth-child(2) {
+  width: 3%;
+  font-weight: 900;
+}
+
+.detailsTable td:last-child {
+  font-weight: 700;
+}
+
+.photoColumn {
+  display: flex;
+  flex: 0 0 120px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.photoFrame {
+  width: 100px;
+  height: 120px;
+  padding: 3px;
+  border: 2px solid #8b6a2a;
+  background: #fdf8ee;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 18%);
+}
+
+.photoFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.studentPhoto {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-top: 9px;
+}
+
+.instructions {
+  flex: 1;
+  min-width: 0;
+  padding-top: 8px;
+  border-top: 1.5px solid #b8a070;
+  color: #3a2e14;
+  font-size: 0.63rem;
+}
+
+.instructions ol {
+  margin: 4px 0 0;
+  padding-left: 1rem;
+}
+
+.instructions li {
+  margin-bottom: 2px;
+}
+
+.signature {
+  display: flex;
+  flex: 0 0 150px;
+  flex-direction: column;
+  align-items: center;
+  color: #1c1208;
+  font-size: 0.65rem;
+  text-align: center;
+}
+
+.signatureScript {
+  min-height: 34px;
+  color: #242424;
+  font-family: "Brush Script MT", cursive;
+  font-size: 1.4rem;
+  font-style: italic;
+}
+
+.signatureLine {
+  width: 145px;
+  margin: 0 0 4px;
+  border-top: 1.5px dashed #5a4a2a;
+}
+
+.signature > span:last-child {
+  color: #6b5a30;
+  font-size: 0.58rem;
+}
+
+@media (max-width: 900px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .preview {
+    padding: 0.4rem;
+  }
+
+  .outerBorder {
+    padding: 6px;
+  }
+
+  .cardContent {
+    padding: 14px 12px;
+  }
+
+  .cardHeader {
+    gap: 6px;
+  }
+
+  .logo {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .detailsTable th,
+  .detailsTable td {
+    padding: 3px 0;
+    font-size: 0.62rem;
+  }
+
+  .detailsTable th {
+    font-size: 0.58rem;
+  }
+
+  .photoColumn {
+    flex-basis: 76px;
+  }
+
+  .photoFrame {
+    width: 70px;
+    height: 90px;
+  }
+
+  .instructions {
+    font-size: 0.5rem;
+  }
+
+  .signature {
+    flex-basis: 110px;
+    font-size: 0.52rem;
+  }
+
+  .signatureLine {
+    width: 105px;
+  }
+}
+
+@page {
+  size: A4 portrait;
+  margin: 8mm;
+}
+
+@media print {
+  :global(body *) {
+    visibility: hidden !important;
+  }
+
+  .printArea,
+  .printArea * {
+    visibility: visible !important;
+  }
+
+  .printArea {
+    position: fixed !important;
+    inset: 0 auto auto 0 !important;
+    width: 100% !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  .card {
+    max-width: none;
+    box-shadow: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .outerBorder {
+    padding: 0;
+  }
+
+  .cardContent {
+    padding: 18px 24px;
+  }
+}
