@@ -24,6 +24,13 @@ export default function Header() {
   const [coursesOpen, setCoursesOpen] = useState(false);
   const [drawerCoursesOpen, setDrawerCoursesOpen] = useState(false);
   const [branchOpen, setBranchOpen] = useState(false);
+  const [mobileCoursesHaveMore, setMobileCoursesHaveMore] = useState(false);
+  const [mobileBranchesHaveMore, setMobileBranchesHaveMore] = useState(false);
+
+  const updateScrollIndicator = (element, setHasMore) => {
+    if (!element) return;
+    setHasMore(element.scrollTop + element.clientHeight < element.scrollHeight - 1);
+  };
 
   const selectedBranch = (() => {
     const match = pathname?.match(/^\/branch\/([^/?#]+)/);
@@ -36,7 +43,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm w-full overflow-x-hidden">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm w-full overflow-visible">
         <div className="flex items-center justify-between w-full px-2 py-2">
           <button
             type="button"
@@ -70,7 +77,11 @@ export default function Header() {
             <Link href="#" className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--color-text-dark)] transition hover:border-b-2 hover:border-[#0A7F2E] hover:text-[var(--color-primary-green)] pb-1">
               আমাদের সম্পর্কে
             </Link>
-            <div className="relative">
+            <div
+              className="relative"
+              onMouseEnter={() => setCoursesOpen(true)}
+              onMouseLeave={() => setCoursesOpen(false)}
+            >
               <button
                 type="button"
                 onClick={() => setCoursesOpen((prev) => !prev)}
@@ -81,7 +92,8 @@ export default function Header() {
                 <span className="text-xs">▾</span>
               </button>
               {coursesOpen ? (
-                <div className="absolute left-0 z-20 mt-2 w-[320px] overflow-hidden rounded-[24px] border border-[var(--color-border)] bg-white shadow-xl">
+                <div className="absolute left-0 top-full z-[60] w-[320px] pt-2">
+                  <div className="overflow-hidden rounded-[24px] border border-[var(--color-border)] bg-white shadow-xl">
                   <div className="space-y-1 p-3">
                     {courses.map((course) => (
                       <Link
@@ -93,6 +105,7 @@ export default function Header() {
                         <div className="text-xs text-[var(--color-text-muted)]">মেয়াদ: {course.duration}</div>
                       </Link>
                     ))}
+                  </div>
                   </div>
                 </div>
               ) : null}
@@ -106,7 +119,11 @@ export default function Header() {
             >
               সার্টিফিকেট ভেরিফাই
             </Link>
-            <div className="relative">
+            <div
+              className="relative"
+              onMouseEnter={() => setBranchOpen(true)}
+              onMouseLeave={() => setBranchOpen(false)}
+            >
               <button
                 type="button"
                 onClick={() => setBranchOpen((prev) => !prev)}
@@ -117,14 +134,14 @@ export default function Header() {
                 <span className="text-xs">▾</span>
               </button>
               {branchOpen ? (
-                <div className="absolute left-0 z-20 mt-2 w-[240px] overflow-hidden rounded-[24px] border border-[var(--color-border)] bg-white shadow-xl">
+                <div className="absolute left-0 top-full z-[60] w-[240px] pt-2">
+                  <div className="overflow-hidden rounded-[24px] border border-[var(--color-border)] bg-white shadow-xl">
                   <div className="space-y-1 p-2">
                     {branchOptions.map((br) => (
                       <Link
                         key={br.value}
                         href={`/branch/${br.value}`}
                         onClick={() => {
-                          setSelectedBranch(br.label);
                           setBranchOpen(false);
                         }}
                         className="block rounded-2xl px-4 py-3 text-sm text-[var(--color-text-dark)] transition hover:bg-[var(--color-bg-light)]"
@@ -132,6 +149,7 @@ export default function Header() {
                         {br.label}
                       </Link>
                     ))}
+                  </div>
                   </div>
                 </div>
               ) : null}
@@ -169,7 +187,7 @@ export default function Header() {
               </button>
             </div>
 
-            <div className="space-y-1 px-4 py-4 overflow-y-auto pb-8">
+            <div className="h-[calc(100dvh-73px)] space-y-1 overflow-y-auto overscroll-contain scroll-smooth touch-pan-y px-4 py-4 pb-8 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               <Link href="#" className="block rounded-2xl px-3 py-3 text-sm font-semibold text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]">
                 আমাদের সম্পর্কে
               </Link>
@@ -183,7 +201,12 @@ export default function Header() {
                   <span>{drawerCoursesOpen ? "−" : "+"}</span>
                 </button>
                 {drawerCoursesOpen ? (
-                  <div className="space-y-1 border-t border-[var(--color-border)] px-3 py-2">
+                  <div className="relative border-t border-[var(--color-border)]">
+                    <div
+                      ref={(element) => updateScrollIndicator(element, setMobileCoursesHaveMore)}
+                      onScroll={(event) => updateScrollIndicator(event.currentTarget, setMobileCoursesHaveMore)}
+                      className="mobile-dropdown-scrollbar max-h-60 space-y-1 overflow-y-auto overscroll-contain scroll-smooth touch-pan-y px-3 py-2"
+                    >
                     {courses.map((course) => (
                       <Link
                         key={course.title}
@@ -194,6 +217,12 @@ export default function Header() {
                         <div className="text-xs">মেয়াদ: {course.duration}</div>
                       </Link>
                     ))}
+                    </div>
+                    {mobileCoursesHaveMore ? (
+                      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 flex h-9 items-end justify-center bg-gradient-to-t from-[var(--color-bg-light)] via-[var(--color-bg-light)]/80 to-transparent pb-1 text-[10px] font-medium text-[var(--color-text-muted)]">
+                        ↓ Scroll for more
+                      </div>
+                    ) : null}
                   </div>
                 ) : null}
               </div>
@@ -215,20 +244,30 @@ export default function Header() {
                     <span>▾</span>
                   </button>
                   {branchOpen ? (
-                    <div className="mt-2 overflow-hidden rounded-[20px] border border-[var(--color-border)] bg-white shadow-sm">
-                      {branchOptions.map((br) => (
-                        <Link
-                          key={br.value}
-                          href={`/branch/${br.value}`}
-                          onClick={() => {
-                            setSelectedBranch(br.label);
-                            setBranchOpen(false);
-                          }}
-                          className="block px-3 py-3 text-left text-sm text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]"
-                        >
-                          {br.label}
-                        </Link>
-                      ))}
+                    <div className="relative mt-2">
+                      <div
+                        ref={(element) => updateScrollIndicator(element, setMobileBranchesHaveMore)}
+                        onScroll={(event) => updateScrollIndicator(event.currentTarget, setMobileBranchesHaveMore)}
+                        className="mobile-dropdown-scrollbar max-h-60 overflow-y-auto overscroll-contain scroll-smooth touch-pan-y rounded-[20px] border border-[var(--color-border)] bg-white shadow-sm"
+                      >
+                        {branchOptions.map((br) => (
+                          <Link
+                            key={br.value}
+                            href={`/branch/${br.value}`}
+                            onClick={() => {
+                              setBranchOpen(false);
+                            }}
+                            className="block px-3 py-3 text-left text-sm text-[var(--color-text-dark)] hover:bg-[var(--color-bg-light)]"
+                          >
+                            {br.label}
+                          </Link>
+                        ))}
+                      </div>
+                      {mobileBranchesHaveMore ? (
+                        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 flex h-9 items-end justify-center rounded-b-[20px] bg-gradient-to-t from-white via-white/80 to-transparent pb-1 text-[10px] font-medium text-[var(--color-text-muted)]">
+                          {"\u2193 Scroll for more"}
+                        </div>
+                      ) : null}
                     </div>
                   ) : null}
                 </div>

@@ -69,6 +69,28 @@ body {
   font-family: var(--font-family);
 }
 
+.mobile-dropdown-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(10, 127, 46, 0.55) transparent;
+}
+
+.mobile-dropdown-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.mobile-dropdown-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mobile-dropdown-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: rgba(10, 127, 46, 0.55);
+}
+
+.mobile-dropdown-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(10, 127, 46, 0.8);
+}
+
 @layer utilities {
   @keyframes marquee {
     0% { transform: translateX(0%); }
