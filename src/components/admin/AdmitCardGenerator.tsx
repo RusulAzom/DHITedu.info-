@@ -251,10 +251,30 @@ export default function AdmitCardGenerator() {
           <article className={styles.card}>
             <div className={styles.outerBorder}>
               <div className={styles.innerBorder}>
+                <svg className={`${styles.corner} ${styles.cornerTopLeft}`} viewBox="0 0 40 40" aria-hidden="true">
+                  <path d="M2 2h18v4H6v14H2z" fill="#2c3e7a" opacity=".7" />
+                  <path d="M8 8h8v3h-5v5H8z" fill="#8b1a1a" opacity=".6" />
+                  <circle cx="14" cy="14" r="2.5" fill="#2c3e7a" opacity=".55" />
+                </svg>
+                <svg className={`${styles.corner} ${styles.cornerTopRight}`} viewBox="0 0 40 40" aria-hidden="true">
+                  <path d="M2 2h18v4H6v14H2z" fill="#2c3e7a" opacity=".7" />
+                  <path d="M8 8h8v3h-5v5H8z" fill="#8b1a1a" opacity=".6" />
+                  <circle cx="14" cy="14" r="2.5" fill="#2c3e7a" opacity=".55" />
+                </svg>
+                <svg className={`${styles.corner} ${styles.cornerBottomLeft}`} viewBox="0 0 40 40" aria-hidden="true">
+                  <path d="M2 2h18v4H6v14H2z" fill="#2c3e7a" opacity=".7" />
+                  <path d="M8 8h8v3h-5v5H8z" fill="#8b1a1a" opacity=".6" />
+                  <circle cx="14" cy="14" r="2.5" fill="#2c3e7a" opacity=".55" />
+                </svg>
+                <svg className={`${styles.corner} ${styles.cornerBottomRight}`} viewBox="0 0 40 40" aria-hidden="true">
+                  <path d="M2 2h18v4H6v14H2z" fill="#2c3e7a" opacity=".7" />
+                  <path d="M8 8h8v3h-5v5H8z" fill="#8b1a1a" opacity=".6" />
+                  <circle cx="14" cy="14" r="2.5" fill="#2c3e7a" opacity=".55" />
+                </svg>
                 <div className={styles.watermark} aria-hidden="true">
-                  {Array.from({ length: 8 }, (_, row) => (
+                  {Array.from({ length: 36 }, (_, row) => (
                     <div className={styles.watermarkRow} key={row}>
-                      {Array.from({ length: 8 }, (_, word) => <span key={word}>DHITedu</span>)}
+                      {Array.from({ length: 10 }, (_, word) => <span key={word}>DHITedu</span>)}
                     </div>
                   ))}
                 </div>
@@ -292,7 +312,9 @@ export default function AdmitCardGenerator() {
                       <div className={styles.photoFrame}>
                         <Image src={details.photoOverride || details.photoUrl} alt={`Photo of ${details.name}`} width={100} height={120} unoptimized className={styles.studentPhoto} />
                       </div>
-                      <QRCodeSVG value="https://dhitedu.info" size={64} bgColor="#fdf8ee" fgColor="#1c1208" level="H" aria-label="DHITedu website QR code" />
+                      <div className={styles.qrFrame}>
+                        <QRCodeSVG value="https://dhitedu.vercel.app/result" size={64} bgColor="#fdf8ee" fgColor="#1c1208" level="H" aria-label="DHITedu result page QR code" />
+                      </div>
                     </div>
                   </div>
                   <footer className={styles.cardFooter}>
@@ -304,7 +326,15 @@ export default function AdmitCardGenerator() {
                       </ol>
                     </div>
                     <div className={styles.signature}>
-                      <span className={styles.signatureScript}>A. Kalam Ajad</span>
+                      <svg className={styles.signatureArtwork} viewBox="0 0 180 90" role="img" aria-label="A. Kalam Ajad signature">
+                        <path d="M14 34 C4 39 2 28 14 18 C28 6 54 3 62 12 C69 20 49 31 33 39 C24 44 15 48 18 53" />
+                        <path d="M18 53 C27 45 35 38 43 36 C49 35 47 43 40 46 C34 49 29 46 35 42 C43 36 49 32 55 37 C62 43 52 53 44 56" />
+                        <path d="M44 56 C50 47 53 32 61 31 C69 30 60 45 57 49 C65 43 73 34 82 35 C93 35 91 43 80 46 C71 49 69 42 78 40" />
+                        <path d="M78 40 C88 34 97 31 105 36 C114 42 106 48 98 45 C107 43 116 38 124 40 C134 43 145 37 158 35 C166 34 171 35 175 34" />
+                        <path d="M64 43 C59 55 53 64 49 78 C47 84 44 83 43 77" />
+                        <path d="M12 65 C35 61 60 58 85 52 C112 46 140 42 174 38" />
+                        <path d="M103 48q4-2 7-1" />
+                      </svg>
                       <div className={styles.signatureLine} />
                       <strong>Controller Of Examinations</strong>
                       <span>DHITedu Board</span>

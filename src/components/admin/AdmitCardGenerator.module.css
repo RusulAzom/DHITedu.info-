@@ -34,13 +34,17 @@
 }
 
 .outerBorder {
-  padding: 10px;
+  padding: 9px;
+  border: 1px solid #b8a070;
+  outline: 1px solid rgb(44 62 122 / 22%);
+  outline-offset: -4px;
 }
 
 .innerBorder {
   position: relative;
   overflow: hidden;
   border: 2.5px solid #2c3e7a;
+  box-shadow: inset 0 0 0 1px rgb(184 160 112 / 72%);
 }
 
 .innerBorder::before,
@@ -67,31 +71,65 @@
   border-width: 0 2px 2px 0;
 }
 
+.corner {
+  position: absolute;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+}
+
+.cornerTopLeft {
+  top: 4px;
+  left: 4px;
+}
+
+.cornerTopRight {
+  top: 4px;
+  right: 4px;
+  transform: scaleX(-1);
+}
+
+.cornerBottomLeft {
+  bottom: 4px;
+  left: 4px;
+  transform: scaleY(-1);
+}
+
+.cornerBottomRight {
+  right: 4px;
+  bottom: 4px;
+  transform: scale(-1);
+}
+
 .watermark {
   position: absolute;
-  inset: -10% -25%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  inset: 0;
+  display: grid;
+  grid-template-rows: repeat(36, minmax(0, 1fr));
+  overflow: hidden;
   color: #1a2a6c;
   opacity: 0.065;
-  transform: rotate(-18deg) scale(1.12);
   pointer-events: none;
 }
 
 .watermarkRow {
   display: flex;
-  justify-content: space-around;
-  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  min-height: 0;
+  gap: 0.35rem;
   color: inherit;
-  font-size: 0.75rem;
+  font-size: 0.62rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
+  line-height: 1;
   white-space: nowrap;
 }
 
 .watermarkRow:nth-child(even) {
-  padding-left: 2rem;
+  transform: translateX(3%);
 }
 
 .cardContent {
@@ -164,6 +202,15 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+}
+
+.badge::before,
+.badge::after {
+  margin: 0 6px;
+  content: "✦";
+  font-size: 0.5rem;
+  opacity: 0.7;
+  vertical-align: 1px;
 }
 
 .serialBar {
@@ -242,6 +289,14 @@
   object-fit: cover;
 }
 
+.qrFrame {
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  border: 1px solid #b8a070;
+  background: #fdf8ee;
+}
+
 .studentPhoto {
   display: block;
   width: 100%;
@@ -284,13 +339,24 @@
   text-align: center;
 }
 
-.signatureScript {
-  min-height: 34px;
-  color: #242424;
-  font-family: "Brush Script MT", cursive;
-  font-size: 1.4rem;
-  font-style: italic;
+.signatureArtwork {
+  display: block;
+  width: 135px;
+  height: 48px;
+  overflow: visible;
+  stroke: #111;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
+
+.signatureArtwork path:nth-child(1) { stroke-width: 1.7px; }
+.signatureArtwork path:nth-child(2) { stroke-width: 1.9px; }
+.signatureArtwork path:nth-child(3) { stroke-width: 2.2px; }
+.signatureArtwork path:nth-child(4) { stroke-width: 2px; }
+.signatureArtwork path:nth-child(5) { stroke-width: 2.5px; }
+.signatureArtwork path:nth-child(6) { stroke-width: 2px; }
+.signatureArtwork path:nth-child(7) { stroke-width: 1.3px; }
 
 .signatureLine {
   width: 145px;
@@ -373,6 +439,15 @@
     height: 76px;
   }
 
+  .qrFrame {
+    padding: 3px;
+  }
+
+  .qrFrame svg {
+    width: 54px;
+    height: 54px;
+  }
+
   .instructions {
     font-size: 0.46rem;
   }
@@ -386,8 +461,9 @@
     width: 88px;
   }
 
-  .signatureScript {
-    font-size: 1.1rem;
+  .signatureArtwork {
+    width: 100px;
+    height: 38px;
   }
 }
 
@@ -465,7 +541,7 @@
   }
 
   .innerBorder {
-    overflow: visible;
+    overflow: hidden;
   }
 
   .cardContent {
@@ -480,5 +556,10 @@
   .photoFrame img {
     max-width: none !important;
     max-height: none !important;
+  }
+
+  .watermark {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 }
