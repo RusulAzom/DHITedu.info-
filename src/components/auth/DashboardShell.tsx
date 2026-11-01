@@ -10,6 +10,7 @@ const navigation: Record<UserRole, { label: string; href: string }[]> = {
     { label: "Overview", href: "/admin/dashboard" },
     { label: "JSON branches", href: "/admin/dashboard#json-branches" },
     { label: "Admit cards", href: "/admin/admit-card" },
+    { label: "Certificates", href: "/admin/certificate" },
   ],
   branch_manager: [{ label: "Overview", href: "/branch/dashboard" }],
   student: [{ label: "Overview", href: "/student/dashboard" }],

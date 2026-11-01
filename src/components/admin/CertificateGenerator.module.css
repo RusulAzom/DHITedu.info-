@@ -1,0 +1,581 @@
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, min(360px, 38%)) minmax(0, 1fr);
+  align-items: start;
+  gap: 1.25rem;
+}
+
+.editor {
+  padding: 1.25rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 5%);
+}
+
+.preview {
+  min-width: 0;
+  overflow: auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #d7d0bc;
+}
+
+.certificate {
+  width: 100%;
+  min-width: 760px;
+  max-width: 1180px;
+  aspect-ratio: 297 / 210;
+  margin: 0 auto;
+  color: #172d25;
+  background: #fffdf7;
+  box-shadow: 0 8px 35px rgb(0 0 0 / 24%);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.outerBorder {
+  width: 100%;
+  height: 100%;
+  padding: 9px;
+  border: 1px solid #b89a56;
+  outline: 1px solid rgb(23 56 46 / 25%);
+  outline-offset: -4px;
+}
+
+.innerBorder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 2px solid #17382e;
+  box-shadow: inset 0 0 0 1px rgb(184 154 86 / 70%);
+}
+
+.innerBorder::before,
+.innerBorder::after {
+  position: absolute;
+  z-index: 4;
+  width: 54px;
+  height: 54px;
+  border-color: #9c7535;
+  border-style: solid;
+  content: "";
+  pointer-events: none;
+}
+
+.innerBorder::before {
+  top: 5px;
+  left: 5px;
+  border-width: 2px 0 0 2px;
+}
+
+.innerBorder::after {
+  right: 5px;
+  bottom: 5px;
+  border-width: 0 2px 2px 0;
+}
+
+.corner {
+  position: absolute;
+  z-index: 4;
+  width: 64px;
+  height: 64px;
+  fill: none;
+  stroke: #9c7535;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5px;
+  pointer-events: none;
+}
+
+.corner circle {
+  fill: #9c7535;
+  stroke: none;
+}
+
+.cornerTopLeft {
+  top: 3px;
+  left: 3px;
+}
+
+.cornerTopRight {
+  top: 3px;
+  right: 3px;
+  transform: scaleX(-1);
+}
+
+.cornerBottomLeft {
+  bottom: 3px;
+  left: 3px;
+  transform: scaleY(-1);
+}
+
+.cornerBottomRight {
+  right: 3px;
+  bottom: 3px;
+  transform: scale(-1);
+}
+
+.watermark {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: grid;
+  grid-template-rows: repeat(14, minmax(0, 1fr));
+  overflow: hidden;
+  color: #17382e;
+  opacity: 0.075;
+  pointer-events: none;
+}
+
+.watermarkRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 0;
+  gap: 1.2rem;
+  color: inherit;
+  font-family: Arial, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.centerWatermark {
+  position: absolute;
+  z-index: 0;
+  top: 52%;
+  left: 61%;
+  width: 30%;
+  height: auto;
+  max-height: 72%;
+  object-fit: contain;
+  opacity: 0.055;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.certificateContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 24px 30px 19px;
+}
+
+.certificateHeader {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 76px;
+  padding: 0 46px 10px;
+  border-bottom: 2px solid #17382e;
+  text-align: center;
+}
+
+.logo {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.headerText {
+  flex: 1;
+  min-width: 0;
+}
+
+.headerEyebrow {
+  margin: 0 0 3px;
+  color: #9c7535;
+  font-family: Arial, sans-serif;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.instituteTitle {
+  margin: 0;
+  color: #17382e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.82rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 0.055em;
+}
+
+.approval,
+.contact {
+  margin: 3px 0 0;
+  font-family: Arial, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+}
+
+.approval {
+  color: #8b1a1a;
+}
+
+.contact {
+  color: #52665c;
+}
+
+.contact span {
+  padding: 0 6px;
+  color: #9c7535;
+}
+
+.certificateNumber {
+  display: flex;
+  flex: 0 0 110px;
+  flex-direction: column;
+  gap: 4px;
+  color: #52665c;
+  font-family: Arial, sans-serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-align: right;
+}
+
+.certificateNumber strong {
+  color: #17382e;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
+}
+
+.mainRow {
+  display: flex;
+  flex: 1;
+  gap: 23px;
+  min-height: 0;
+  padding: 13px 0 10px;
+}
+
+.detailsPanel {
+  display: flex;
+  flex: 0 0 25%;
+  flex-direction: column;
+  padding: 13px 15px;
+  border: 1px solid rgb(156 117 53 / 42%);
+  background: rgb(244 240 225 / 82%);
+}
+
+.panelTitle {
+  margin: 0 0 8px;
+  color: #9c7535;
+  font-family: Arial, sans-serif;
+  font-size: 0.57rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.studentDetails {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.studentDetails div {
+  min-width: 0;
+}
+
+.studentDetails dt {
+  color: #68756c;
+  font-family: Arial, sans-serif;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.studentDetails dd {
+  margin: 1px 0 0;
+  color: #20372d;
+  font-size: 0.72rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.gradeBlock {
+  display: grid;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 9px;
+  border-top: 1px solid rgb(156 117 53 / 45%);
+}
+
+.gradeBlock > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #52665c;
+  font-family: Arial, sans-serif;
+  font-size: 0.6rem;
+}
+
+.gradeBlock strong {
+  color: #17382e;
+}
+
+.gradeBlock .finalGrade {
+  padding-top: 5px;
+  border-top: 1px solid rgb(156 117 53 / 30%);
+  color: #17382e;
+  font-weight: 800;
+}
+
+.awardContent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 5px 16px;
+  text-align: center;
+}
+
+.certificateKicker {
+  margin: 0 0 2px;
+  color: #9c7535;
+  font-family: Arial, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+}
+
+.certificateTitle {
+  margin: 0;
+  color: #17382e;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+}
+
+.presented {
+  margin: 6px 0 0;
+  color: #52665c;
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+.studentName {
+  width: fit-content;
+  max-width: 100%;
+  margin: 6px 0;
+  padding: 0 14px 5px;
+  border-bottom: 1px solid #b89a56;
+  color: #8b1a1a;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.awardCopy {
+  max-width: 700px;
+  margin: 5px 0;
+  color: #405248;
+  font-size: 0.77rem;
+  line-height: 1.5;
+}
+
+.courseName {
+  max-width: 100%;
+  margin: 3px 0;
+  color: #17382e;
+  font-size: clamp(0.98rem, 2vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.certificateFooter {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-end;
+  gap: 18px;
+  min-height: 75px;
+  padding: 8px 3px 0;
+  border-top: 1px solid rgb(156 117 53 / 58%);
+}
+
+.issueBlock {
+  display: flex;
+  flex: 0 0 115px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding-bottom: 4px;
+  color: #66746b;
+  font-family: Arial, sans-serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+}
+
+.issueBlock strong {
+  color: #17382e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.75rem;
+  letter-spacing: 0;
+}
+
+.verificationLabel {
+  margin-top: 4px;
+  color: #9c7535;
+  font-size: 0.49rem;
+  letter-spacing: 0.04em;
+}
+
+.qrFrame {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 5px;
+  border: 1px solid #b89a56;
+  background: #fffdf7;
+}
+
+.signatures {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.signature {
+  display: flex;
+  flex: 0 1 165px;
+  flex-direction: column;
+  align-items: center;
+  color: #20372d;
+  font-family: Arial, sans-serif;
+  font-size: 0.58rem;
+  text-align: center;
+}
+
+.signatureArtwork {
+  display: block;
+  width: 126px;
+  height: 42px;
+  overflow: visible;
+  fill: none;
+  stroke: #111;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.signatureArtwork path:nth-child(1) { stroke-width: 1.7px; }
+.signatureArtwork path:nth-child(2) { stroke-width: 1.9px; }
+.signatureArtwork path:nth-child(3) { stroke-width: 2.2px; }
+.signatureArtwork path:nth-child(4) { stroke-width: 2px; }
+.signatureArtwork path:nth-child(5) { stroke-width: 2.5px; }
+.signatureArtwork path:nth-child(6) { stroke-width: 2px; }
+.signatureArtwork path:nth-child(7) { stroke-width: 1.3px; }
+
+.directorMark path {
+  stroke-width: 2px;
+}
+
+.signatureLine {
+  width: 145px;
+  margin: 0 0 4px;
+  border-top: 1px solid #8e9b91;
+}
+
+@media (max-width: 900px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .editor {
+    padding: 1rem;
+  }
+
+  .preview {
+    padding: 0.5rem;
+  }
+}
+
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+@media print {
+  :global(body *) {
+    visibility: hidden !important;
+  }
+
+  .printArea,
+  .printArea * {
+    visibility: visible !important;
+  }
+
+  .printArea {
+    position: fixed !important;
+    inset: 0 !important;
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    background: white !important;
+    z-index: 99999 !important;
+  }
+
+  .certificate {
+    width: 281mm !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 194mm !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .outerBorder {
+    padding: 7px;
+  }
+
+  .innerBorder {
+    overflow: hidden;
+  }
+
+  .certificateContent {
+    padding: 6mm 7mm 4mm;
+  }
+
+  .certificateHeader {
+    min-height: 20mm;
+    padding: 0 12mm 2mm;
+  }
+
+  .mainRow {
+    padding: 3mm 0 2mm;
+  }
+
+  .certificateFooter {
+    min-height: 19mm;
+    padding-top: 2mm;
+  }
+
+  .centerWatermark,
+  .watermark {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
