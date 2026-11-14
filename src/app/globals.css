@@ -104,7 +104,10 @@ body {
 }
 
 @media print {
+  html,
   body {
+    margin: 0 !important;
+    padding: 0 !important;
     background: #fff !important;
     color: #000 !important;
   }
@@ -121,6 +124,12 @@ body {
     display: none !important;
   }
 
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
   #result-print-area,
   .rounded-\[20px\],
   .bg-white,
@@ -133,9 +142,9 @@ body {
 
   #result-print-area {
     overflow: visible !important;
-    box-shadow: none !important;
-    border: 1px solid #ddd !important;
-    border-radius: 0 !important;
+    padding: 4px !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
   }
 
   .certificate-card img {
@@ -145,13 +154,8 @@ body {
 
   .certificate-card .absolute img {
     max-height: none !important;
-    max-width: 80% !important;
-    opacity: 0.3 !important;
-  }
-
-  main {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+    max-width: 70% !important;
+    opacity: 0.25 !important;
   }
 
   table {
@@ -159,19 +163,32 @@ body {
     width: 100%;
   }
 
+  #result-print-area table {
+    font-size: 10px !important;
+  }
+
   th,
   td {
     border: 1px solid #ccc !important;
-    padding: 6px 8px !important;
+    padding: 2px 5px !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+  }
+
+  #result-print-area th,
+  #result-print-area td {
+    padding: 2px 5px !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
   }
 
   img {
-    max-height: 130px;
-    max-width: 130px;
+    max-height: 110px;
+    max-width: 110px;
   }
 
   @page {
     size: A4;
-    margin: 15mm;
+    margin: 8mm;
   }
 }

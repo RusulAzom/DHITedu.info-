@@ -84,7 +84,7 @@ export default function ResultPage() {
   return (
     <main className="min-h-screen pt-[100px] mb-[100px] px-2 sm:px-4 max-w-5xl mx-auto">
       <Header />
-      <div className="flex flex-row items-center gap-2 sm:gap-4 w-full border-b pb-3 mb-4">
+      <div className="flex flex-row items-center gap-2 sm:gap-4 w-full border-b pb-3 mb-4 print:pb-2 print:mb-2">
         <div className="shrink-0">
           <img
             src="/src/data/imgs/dhitlogo.png"
@@ -109,7 +109,7 @@ export default function ResultPage() {
         </div>
       </div>
 
-        <div className="w-full p-2 sm:p-6 rounded-lg bg-white shadow-sm ring-1 ring-[var(--color-border)]">
+        <div className="w-full p-2 sm:p-6 print:p-0 rounded-lg bg-white shadow-sm ring-1 ring-[var(--color-border)]">
           {!hasResults && (
             <ResultCheckForm
               onSearch={handleSearch}

@@ -9,13 +9,13 @@ export default function ResultDisplayCard({ resultData, onPrint, onResetSearch }
   console.log("STEP 3 - ResultDisplayCard Received Student Prop:", student);
 
   return (
-    <div className="mt-2">
-      <div className="mb-4">
-        <h3 className="text-base font-semibold text-[var(--color-text-dark)]">Result Details</h3>
+    <div className="mt-2 print:mt-0">
+      <div className="mb-4 print:mb-2">
+        <h3 className="text-base font-semibold text-[var(--color-text-dark)] print:text-sm">Result Details</h3>
       </div>
 
       <div
-        className="w-full p-2 sm:p-6 rounded-lg bg-white shadow-sm ring-1 ring-[var(--color-border)] relative overflow-hidden certificate-card"
+        className="w-full p-2 sm:p-6 print:p-1 rounded-lg bg-white shadow-sm ring-1 ring-[var(--color-border)] relative overflow-hidden certificate-card"
         id="result-print-area"
         style={{ WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}
       >
@@ -34,53 +34,59 @@ export default function ResultDisplayCard({ resultData, onPrint, onResetSearch }
             <img
               src={student?.picture_url || `/result/pics/${student?.picture}`}
               alt={student?.name || "Student"}
-              className="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-emerald-600 mx-auto shadow-md"
+              className="w-28 h-28 sm:w-32 sm:h-32 print:w-20 print:h-20 rounded-full object-cover border-4 border-emerald-600 mx-auto shadow-md print:border-2"
               onError={(e) => {
                 e.currentTarget.onerror = null;
                 e.currentTarget.src = "/result/pics/no-photo.png";
               }}
             />
 
-            <h2 className="mt-4 text-xl font-bold text-[var(--color-text-dark)]">{student.name}</h2>
+            <h2 className="mt-4 text-xl font-bold text-[var(--color-text-dark)] print:mt-1 print:text-lg">{student.name}</h2>
           </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
-            <div className="text-xs text-[var(--color-text-muted)]">Student Name</div>
-            <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{student.name}</div>
-          </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
-            <div className="text-xs text-[var(--color-text-muted)]">Father&apos;s Name</div>
-            <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{student?.father || student?.f_name || "-"}</div>
-          </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
-            <div className="text-xs text-[var(--color-text-muted)]">Mother&apos;s Name</div>
-            <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{student?.mother || student?.m_name || "-"}</div>
-          </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
-            <div className="text-xs text-[var(--color-text-muted)]">Registration No</div>
-            <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{student.reg_id}</div>
-          </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
-            <div className="text-xs text-[var(--color-text-muted)]">Roll No</div>
-            <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{student.roll}</div>
-          </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3">
-            <div className="text-xs text-[var(--color-text-muted)]">Branch</div>
-            <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">{branch.name}</div>
-            <div className="text-xs text-[var(--color-text-muted)]">{branch.address}</div>
-          </div>
-          <div className="rounded-lg border border-[var(--color-border)] bg-white/60 px-4 py-3 sm:col-span-2">
-            <div className="text-xs text-[var(--color-text-muted)]">Course</div>
-            <div className="mt-0.5 text-sm font-semibold text-[var(--color-text-dark)]">
-              {course_code} - {student.course_name}
+        <div className="mt-4 print:mt-2 rounded-lg border border-[var(--color-border)] bg-white/70 px-3 py-2.5 print:px-2 print:py-1.5 print:bg-white">
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3 print:grid-cols-3 print:gap-x-3 print:gap-y-1">
+            <div className="min-w-0">
+              <dt className="text-[10px] font-medium uppercase tracking-wide text-[var(--color-text-muted)] print:text-[9px]">Student Name</dt>
+              <dd className="text-sm font-semibold leading-tight text-[var(--color-text-dark)] print:text-[11px]">{student.name}</dd>
             </div>
-          </div>
+            <div className="min-w-0">
+              <dt className="text-[10px] font-medium uppercase tracking-wide text-[var(--color-text-muted)] print:text-[9px]">Father&apos;s Name</dt>
+              <dd className="text-sm font-semibold leading-tight text-[var(--color-text-dark)] print:text-[11px]">{student?.father || student?.f_name || "-"}</dd>
+            </div>
+            <div className="min-w-0">
+              <dt className="text-[10px] font-medium uppercase tracking-wide text-[var(--color-text-muted)] print:text-[9px]">Mother&apos;s Name</dt>
+              <dd className="text-sm font-semibold leading-tight text-[var(--color-text-dark)] print:text-[11px]">{student?.mother || student?.m_name || "-"}</dd>
+            </div>
+            <div className="min-w-0">
+              <dt className="text-[10px] font-medium uppercase tracking-wide text-[var(--color-text-muted)] print:text-[9px]">Registration No</dt>
+              <dd className="text-sm font-semibold leading-tight text-[var(--color-text-dark)] print:text-[11px]">{student.reg_id}</dd>
+            </div>
+            <div className="min-w-0">
+              <dt className="text-[10px] font-medium uppercase tracking-wide text-[var(--color-text-muted)] print:text-[9px]">Roll No</dt>
+              <dd className="text-sm font-semibold leading-tight text-[var(--color-text-dark)] print:text-[11px]">{student.roll}</dd>
+            </div>
+            <div className="min-w-0">
+              <dt className="text-[10px] font-medium uppercase tracking-wide text-[var(--color-text-muted)] print:text-[9px]">Branch</dt>
+              <dd className="text-sm font-semibold leading-tight text-[var(--color-text-dark)] print:text-[11px]">
+                {branch.name}
+                {branch.address ? (
+                  <span className="block text-[10px] font-normal leading-tight text-[var(--color-text-muted)] print:text-[9px]">{branch.address}</span>
+                ) : null}
+              </dd>
+            </div>
+            <div className="col-span-2 min-w-0 sm:col-span-3 print:col-span-3">
+              <dt className="text-[10px] font-medium uppercase tracking-wide text-[var(--color-text-muted)] print:text-[9px]">Course</dt>
+              <dd className="text-sm font-semibold leading-tight text-[var(--color-text-dark)] print:text-[11px]">
+                {course_code} - {student.course_name}
+              </dd>
+            </div>
+          </dl>
         </div>
 
-        <div className="mt-6 rounded-lg border border-[var(--color-border)] bg-white p-4">
-          <h3 className="text-base font-semibold text-[var(--color-text-dark)]">Academic Results</h3>
-          <div className="mt-3 overflow-x-auto">
+        <div className="mt-6 print:mt-2 rounded-lg border border-[var(--color-border)] bg-white p-4 print:p-2">
+          <h3 className="text-base font-semibold text-[var(--color-text-dark)] print:text-sm">Academic Results</h3>
+          <div className="mt-3 print:mt-1 overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead>
                 <tr className="border-b border-[var(--color-border)]">
