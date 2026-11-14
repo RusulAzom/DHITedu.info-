@@ -87,15 +87,15 @@ export default function ResultDisplayCard({ resultData, onPrint, onResetSearch }
                   <th rowSpan={2} className="py-2 pr-3 font-semibold text-[var(--color-text-muted)]">Exam</th>
                   <th rowSpan={2} className="py-2 pr-3 font-semibold text-[var(--color-text-muted)]">Season/Year</th>
                   <th colSpan={3} className="py-2 px-3 font-semibold text-center text-[var(--color-text-muted)]">
-                    Yearly / Subject Wise Grade
+                    Yearly Grade
                   </th>
                   <th rowSpan={2} className="py-2 px-3 font-semibold text-[var(--color-text-muted)]">Final Grade / GPA</th>
                   <th rowSpan={2} className="py-2 font-semibold text-[var(--color-text-muted)]">Status</th>
                 </tr>
                 <tr className="border-b border-[var(--color-border)]">
-                  <th className="py-2 pr-3 font-semibold text-[var(--color-text-muted)]">1st</th>
-                  <th className="py-2 pr-3 font-semibold text-[var(--color-text-muted)]">2nd</th>
-                  <th className="py-2 font-semibold text-[var(--color-text-muted)]">3rd</th>
+                  <th className="py-2 pr-3 font-semibold text-[var(--color-text-muted)]">1st Yr</th>
+                  <th className="py-2 pr-3 font-semibold text-[var(--color-text-muted)]">2nd Yr</th>
+                  <th className="py-2 font-semibold text-[var(--color-text-muted)]">3rd Yr</th>
                 </tr>
               </thead>
               <tbody>
